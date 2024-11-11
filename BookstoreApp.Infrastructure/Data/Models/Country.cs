@@ -19,5 +19,8 @@ namespace BookstoreApp.Infrastructure.Data.Models
         [MaxLength(Constants.DataConstants.Country.NameMaxLength)]
         [Comment("Country name")]
         public string Name { get; set; } = null!;
+
+        [Comment("List of all orders in the country")]
+        public IEnumerable<Order> Orders { get; set; } = new List<Order>();
     }
 }

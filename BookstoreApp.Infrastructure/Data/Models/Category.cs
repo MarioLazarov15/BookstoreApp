@@ -19,5 +19,8 @@ namespace BookstoreApp.Infrastructure.Data.Models
         [MaxLength(Constants.DataConstants.Category.NameMaxLength)]
         [Comment("Category name")]
         public string Name { get; set; } = null!;
+
+        [Comment("List of all books in the category")]
+        public IEnumerable<Book> Books { get; set; } = new List<Book>();
     }
 }
