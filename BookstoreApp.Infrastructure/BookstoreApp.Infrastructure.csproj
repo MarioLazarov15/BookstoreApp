@@ -24,4 +24,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BookstoreApp.Core\BookstoreApp.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -11,6 +11,7 @@ namespace BookstoreApp.Infrastructure.Data
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
+
         }
 
         public DbSet<Book> Books { get; set; }
