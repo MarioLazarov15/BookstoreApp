@@ -57,5 +57,7 @@ namespace BookstoreApp.Infrastructure.Data.Models
 
         [Comment("List of the mapping table OrderBook")]
         public IEnumerable<OrderBook> OrdersBooks { get; set; } = new List<OrderBook>();
+
+        public IEnumerable<UserOrder> UsersOrders { get; set; } = new List<UserOrder>();
     }
 }

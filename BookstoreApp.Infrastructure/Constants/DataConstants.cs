@@ -8,6 +8,11 @@ namespace BookstoreApp.Infrastructure.Constants
 {
     public class DataConstants
     {
+        public static class User
+        {
+            public const int FirstNameMaxLength = 25;
+            public const int LastNameMaxLength = 25;
+        }
         public static class Category
         {
             public const int NameMaxLength = 50;
