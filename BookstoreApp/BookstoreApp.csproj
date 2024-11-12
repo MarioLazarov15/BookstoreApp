@@ -22,4 +22,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BookstoreApp.Core\BookstoreApp.Core.csproj" />
+    <ProjectReference Include="..\BookstoreApp.Infrastructure\BookstoreApp.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
