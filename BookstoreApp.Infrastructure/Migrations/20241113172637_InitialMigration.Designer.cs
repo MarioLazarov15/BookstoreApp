@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookstoreApp.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241112170827_initialMigration")]
-    partial class initialMigration
+    [Migration("20241113172637_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -266,14 +266,9 @@ namespace BookstoreApp.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasComment("Book amount");
 
-                    b.Property<int?>("BookId1")
-                        .HasColumnType("int");
-
                     b.HasKey("OrderId", "BookId");
 
                     b.HasIndex("BookId");
-
-                    b.HasIndex("BookId1");
 
                     b.ToTable("OrdersBooks", t =>
                         {
@@ -310,9 +305,6 @@ namespace BookstoreApp.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasComment("Product identifier");
 
-                    b.Property<int?>("BookId1")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductAmount")
                         .HasColumnType("int")
                         .HasComment("Amount of certain book");
@@ -320,8 +312,6 @@ namespace BookstoreApp.Infrastructure.Migrations
                     b.HasKey("ShoppingcartId", "BookId");
 
                     b.HasIndex("BookId");
-
-                    b.HasIndex("BookId1");
 
                     b.ToTable("ShoppingcartsBooks", t =>
                         {
@@ -511,14 +501,10 @@ namespace BookstoreApp.Infrastructure.Migrations
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.OrderBook", b =>
                 {
                     b.HasOne("BookstoreApp.Infrastructure.Data.Models.Book", "Book")
-                        .WithMany()
+                        .WithMany("OrdersBooks")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("BookstoreApp.Infrastructure.Data.Models.Book", null)
-                        .WithMany("OrdersBooks")
-                        .HasForeignKey("BookId1");
 
                     b.HasOne("BookstoreApp.Infrastructure.Data.Models.Order", "Order")
                         .WithMany("OrdersBooks")
@@ -534,14 +520,10 @@ namespace BookstoreApp.Infrastructure.Migrations
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.ShoppingcartBook", b =>
                 {
                     b.HasOne("BookstoreApp.Infrastructure.Data.Models.Book", "Book")
-                        .WithMany()
+                        .WithMany("ShoppingcartsBooks")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("BookstoreApp.Infrastructure.Data.Models.Book", null)
-                        .WithMany("ShoppingcartsBooks")
-                        .HasForeignKey("BookId1");
 
                     b.HasOne("BookstoreApp.Infrastructure.Data.Models.ShoppingCart", "Shoppingcart")
                         .WithMany("ShoppingcartsBooks")

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BookstoreApp.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initialMigration : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -255,8 +255,7 @@ namespace BookstoreApp.Infrastructure.Migrations
                 {
                     ShoppingcartId = table.Column<int>(type: "int", nullable: false, comment: "Shopping cart identifier"),
                     BookId = table.Column<int>(type: "int", nullable: false, comment: "Product identifier"),
-                    ProductAmount = table.Column<int>(type: "int", nullable: false, comment: "Amount of certain book"),
-                    BookId1 = table.Column<int>(type: "int", nullable: true)
+                    ProductAmount = table.Column<int>(type: "int", nullable: false, comment: "Amount of certain book")
                 },
                 constraints: table =>
                 {
@@ -267,11 +266,6 @@ namespace BookstoreApp.Infrastructure.Migrations
                         principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ShoppingcartsBooks_Books_BookId1",
-                        column: x => x.BookId1,
-                        principalTable: "Books",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ShoppingcartsBooks_Shoppingcarts_ShoppingcartId",
                         column: x => x.ShoppingcartId,
@@ -287,8 +281,7 @@ namespace BookstoreApp.Infrastructure.Migrations
                 {
                     BookId = table.Column<int>(type: "int", nullable: false, comment: "Book identifier"),
                     OrderId = table.Column<int>(type: "int", nullable: false, comment: "Order identifier"),
-                    Amount = table.Column<int>(type: "int", nullable: false, comment: "Book amount"),
-                    BookId1 = table.Column<int>(type: "int", nullable: true)
+                    Amount = table.Column<int>(type: "int", nullable: false, comment: "Book amount")
                 },
                 constraints: table =>
                 {
@@ -299,11 +292,6 @@ namespace BookstoreApp.Infrastructure.Migrations
                         principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_OrdersBooks_Books_BookId1",
-                        column: x => x.BookId1,
-                        principalTable: "Books",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_OrdersBooks_Orders_OrderId",
                         column: x => x.OrderId,
@@ -393,19 +381,9 @@ namespace BookstoreApp.Infrastructure.Migrations
                 column: "BookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrdersBooks_BookId1",
-                table: "OrdersBooks",
-                column: "BookId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ShoppingcartsBooks_BookId",
                 table: "ShoppingcartsBooks",
                 column: "BookId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ShoppingcartsBooks_BookId1",
-                table: "ShoppingcartsBooks",
-                column: "BookId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UsersOrders_UserId",
