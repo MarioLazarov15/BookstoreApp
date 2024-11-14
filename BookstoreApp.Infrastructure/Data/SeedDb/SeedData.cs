@@ -32,6 +32,12 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
         public Book IntoTheWild { get; set; }
         public Book TheGirlWhoStoleAnElephant { get; set; }
 
+        public SeedData()
+        {
+            SeedCategories();
+            SeedProducts();
+        }
+
         private void SeedCategories()
         {
             AutobiographyCategory = new Category()
