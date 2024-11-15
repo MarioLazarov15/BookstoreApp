@@ -139,7 +139,7 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
                 Id = 1,
                 Title = "Barack Obama",
                 Description = "“My identity might begin with the fact of my race, but it didn’t, couldn't end there. At least that’s what I would choose to believe”\r\nDreams From My Father by Barack Obama (Paperback ISBN 9781782119258) book cover\r\nAvailable as\tPaperback, eBook, Downloadable audio\r\n\r\nThis #1 New York Times bestselling",
-                Price = 7.99M,
+                Price = 19.99M,
                 ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNigBtJfs3f0sARUdACCC44A_QF7Vh0k_BGQ&s",
                 CategoryId = 1
             };
@@ -149,7 +149,7 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
                 Id = 2,
                 Title = "Michelle Obama",
                 Description = "In a life filled with meaning and accomplishment, Michelle Obama has emerged as one of the most iconic and compelling women of our era.",
-                Price = 4.99M,
+                Price = 19.99M,
                 ImageUrl = "https://m.media-amazon.com/images/I/81cJTmFpG-L._AC_UF1000,1000_QL80_.jpg",
                 CategoryId = 1
             };
@@ -159,7 +159,7 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
                 Id = 3,
                 Title = "The Elements of The Crown",
                 Description = "In an empire divided into three rings, seventeen-year-old Talise is from the outer ring. This dangerous and crime-laden land has one constant… death.",
-                Price = 19.99M,
+                Price = 22.99M,
                 ImageUrl = "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1623351257i/58310267.jpg",
                 CategoryId = 2
             };
@@ -169,7 +169,7 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
                 Id = 4,
                 Title = "The Queen of Nothing",
                 Description = "A powerful curse forces the exiled Queen of Faerie to choose between ambition and humanity in this highly anticipated and jaw-dropping finale to The Folk of the Air trilogy from a #1 New York Times bestselling author.",
-                Price = 12.99M,
+                Price = 23.99M,
                 ImageUrl = "https://m.media-amazon.com/images/I/91nGoCptgmL._AC_UF1000,1000_QL80_.jpg",
                 CategoryId = 2
             };
@@ -179,7 +179,7 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
                 Id = 5,
                 Title = "U.S. History",
                 Description = "Covering the most important material taught in high school American history class, this essential review book breaks need-to-know content into accessible, easily understood lessons.",
-                Price = 30.99M,
+                Price = 29.99M,
                 ImageUrl = "https://images.penguinrandomhouse.com/cover/9780525570127",
                 CategoryId = 3
             };
@@ -189,7 +189,7 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
                 Id = 6,
                 Title = "World History",
                 Description = "Glencoe World History is a full-survey world history program authored by a world-renowned historian, Jackson Spielvogel, and the National Geographic Society. ",
-                Price = 1.99M,
+                Price = 29.99M,
                 ImageUrl = "https://m.media-amazon.com/images/I/A1BUSpcfSWL._AC_UF1000,1000_QL80_.jpg",
                 CategoryId = 3
             };
@@ -199,7 +199,7 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
                 Id = 7,
                 Title = "Just try one bite",
                 Description = "These three kids are determined to get their parents to put down the ice cream, cake, and chicken fried steak to just try one bite of healthy whole foods.",
-                Price = 12.99M,
+                Price = 9.99M,
                 ImageUrl = "https://m.media-amazon.com/images/I/81L4z-NZt2L._AC_UF1000,1000_QL80_.jpg",
                 CategoryId = 4
             };
@@ -209,7 +209,7 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
                 Id = 8,
                 Title = "If you give a Mouse a Cookie",
                 Description = "If a hungry little mouse shows up on your doorstep, you might want to give him a cookie. And if you give him a cookie, he'll ask for a glass of milk.",
-                Price = 1.49M,
+                Price = 7.49M,
                 ImageUrl = "https://m.media-amazon.com/images/I/813csV5cPqL.jpg",
                 CategoryId = 4
             };
@@ -239,7 +239,7 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
                 Id = 11,
                 Title = "All Systems Red",
                 Description = "A murderous android discovers itself in All Systems Red, a tense science fiction adventure by Martha Wells that interrogates the roots of consciousness through Artificial Intelligence.",
-                Price = 21.80M,
+                Price = 15.80M,
                 ImageUrl = "https://m.media-amazon.com/images/I/81thdg0KmZL.jpg",
                 CategoryId = 6
             };
@@ -249,7 +249,7 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
                 Id = 12,
                 Title = "The Sound of Stars",
                 Description = "This book has everything! Aliens set on conquering earth! A determined heroine with a hidden stash of books! And the power of music and stories to give those with every reason to hate the power to love.",
-                Price = 3.49M,
+                Price = 16.49M,
                 ImageUrl = "https://m.media-amazon.com/images/I/81yhKr0TzXL.jpg",
                 CategoryId = 6
             };
@@ -259,7 +259,7 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
                 Id = 13,
                 Title = "Into The Wild",
                 Description = " In April 1992 a young man from a well-to-do family hitchhiked to Alaska and walked alone into the wilderness north of Mt. McKinley. Four months later, his decomposed body was found by a moose hunter. This is the unforgettable story of how Christopher Johnson McCandless came to die.",
-                Price = 5.49M,
+                Price = 20.49M,
                 ImageUrl = "https://m.media-amazon.com/images/I/61A+LdmTESL._AC_UF1000,1000_QL80_.jpg",
                 CategoryId = 7
             };
@@ -269,7 +269,7 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
                 Id = 14,
                 Title = "The Girl Who Stole an Elephant",
                 Description = "Chaya, outspoken hero, leads her friends and a gorgeous elephant on a noisy, fraught, joyous adventure through the jungle where revolution is stirring and leeches lurk. Will stealing the queen’s jewels be the beginning or the end of everything for the intrepid gang?",
-                Price = 5.49M,
+                Price = 8.49M,
                 ImageUrl = "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1563136258i/44906685.jpg",
                 CategoryId = 7
             };
