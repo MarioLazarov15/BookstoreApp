@@ -1,4 +1,5 @@
 ﻿using BookstoreApp.Infrastructure.Data.Models;
+using BookstoreApp.Infrastructure.Data.SeedDb;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,6 +23,11 @@ namespace BookstoreApp.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfiguration(new CategoryConfiguration());
+            builder.ApplyConfiguration(new BookConfiguration());
+            builder.ApplyConfiguration(new CountryConfiguration());
+            builder.ApplyConfiguration(new ShoppingcartConfiguration());
+
             builder.Entity<Book>()
                 .Property(b => b.Price)
                 .HasPrecision(18, 2);

@@ -17,6 +17,13 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
         public Category ScienceFictionCategory { get; set; }
         public Category AdventureCategory { get; set; }
 
+        public Country Bulgaria { get; set; }
+        public Country Greece { get; set; }
+        public Country Serbia { get; set; }
+        public Country Romania { get; set; }
+        public Country Croatia { get; set; }
+        public Country Albania { get; set; }
+
         public Book BarackObama { get; set; }
         public Book MichelleObama { get; set; }
         public Book TheElementsOfTheCrown { get; set; }
@@ -32,10 +39,13 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
         public Book IntoTheWild { get; set; }
         public Book TheGirlWhoStoleAnElephant { get; set; }
 
+        public ShoppingCart UserShoppingcart { get; set; }
+
         public SeedData()
         {
             SeedCategories();
-            SeedProducts();
+            SeedCountries();
+            SeedBooks();
         }
 
         private void SeedCategories()
@@ -82,8 +92,47 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
                 Name = "Adventure"
             };
         }
+        private void SeedCountries()
+        {
+            Bulgaria = new Country()
+            {
+                Id = 1,
+                Name = "Bulgaria"
+            };
 
-        private void SeedProducts()
+            Greece = new Country()
+            {
+                Id = 2,
+                Name = "Greece"
+            };
+
+            Serbia = new Country()
+            {
+                Id = 3,
+                Name = "Serbia"
+            };
+
+            Romania = new Country()
+            {
+                Id = 4,
+                Name = "Romania"
+            };
+
+            Croatia = new Country()
+            {
+                Id = 5,
+                Name = "Croatia"
+            };
+
+            Albania = new Country()
+            { 
+                Id = 6,
+                Name = "Albania"
+            };
+
+        }
+
+        private void SeedBooks()
         {
             BarackObama = new Book
             {
