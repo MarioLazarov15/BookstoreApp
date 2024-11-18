@@ -1,5 +1,6 @@
 using BookstoreApp.Infrastructure;
 using BookstoreApp.Infrastructure.Data;
+using BookstoreApp.Infrastructure.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

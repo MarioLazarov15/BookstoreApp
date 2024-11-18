@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,10 +12,10 @@ namespace BookstoreApp.Infrastructure.Data.Models
     [Comment("Mapping table of ApplicationUser and Order")]
     public class UserOrder
     {
-        [ForeignKey(nameof(ApplicationUser))]
+        [ForeignKey(nameof(IdentityUser))]
         [Comment("User identifier")]
         public string UserId { get; set; } = null!;
-        public ApplicationUser ApplicationUser { get; set; } = null!;
+        public IdentityUser IdentityUser { get; set; } = null!;
 
         [ForeignKey(nameof(Order))]
         [Comment("Order identifier")]

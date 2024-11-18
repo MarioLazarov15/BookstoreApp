@@ -361,3 +361,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/BookstoreApp/Data/Migrations/00000000000000_CreateIdentitySchema.cs
+/BookstoreApp/Data/Migrations/00000000000000_CreateIdentitySchema.Designer.cs
+/BookstoreApp/Data/Migrations/ApplicationDbContextModelSnapshot.cs
+/BookstoreApp/Data/ApplicationDbContext.cs
+/BookstoreApp/Data/Migrations/00000000000000_CreateIdentitySchema.cs
+/BookstoreApp/Data/Migrations/00000000000000_CreateIdentitySchema.cs
+/BookstoreApp/Data/Migrations/00000000000000_CreateIdentitySchema.Designer.cs
+/BookstoreApp/Data/Migrations/00000000000000_CreateIdentitySchema.cs
+/BookstoreApp/Data/Migrations/ApplicationDbContextModelSnapshot.cs

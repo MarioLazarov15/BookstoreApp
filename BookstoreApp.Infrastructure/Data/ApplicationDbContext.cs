@@ -1,11 +1,12 @@
 ﻿using BookstoreApp.Infrastructure.Data.Models;
 using BookstoreApp.Infrastructure.Data.SeedDb;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookstoreApp.Infrastructure.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
@@ -13,7 +14,6 @@ namespace BookstoreApp.Infrastructure.Data
         }
 
         public DbSet<Book> Books { get; set; }
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<ShoppingCart> Shoppingcarts { get; set; }
