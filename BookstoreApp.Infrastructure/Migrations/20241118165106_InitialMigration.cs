@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace BookstoreApp.Infrastructure.Migrations
 {
     /// <inheritdoc />
@@ -325,6 +327,54 @@ namespace BookstoreApp.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 },
                 comment: "Mapping table of ApplicationUser and Order");
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Autobiography" },
+                    { 2, "Fantasy" },
+                    { 3, "History" },
+                    { 4, "Children's Books" },
+                    { 5, "Romance" },
+                    { 6, "Science Fiction" },
+                    { 7, "Adventure" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Countries",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Bulgaria" },
+                    { 2, "Greece" },
+                    { 3, "Serbia" },
+                    { 4, "Romania" },
+                    { 5, "Croatia" },
+                    { 6, "Albania" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "Id", "CategoryId", "Description", "ImageUrl", "Price", "Title" },
+                values: new object[,]
+                {
+                    { 1, 1, "“My identity might begin with the fact of my race, but it didn’t, couldn't end there. At least that’s what I would choose to believe”\r\nDreams From My Father by Barack Obama (Paperback ISBN 9781782119258) book cover\r\nAvailable as	Paperback, eBook, Downloadable audio\r\n\r\nThis #1 New York Times bestselling", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNigBtJfs3f0sARUdACCC44A_QF7Vh0k_BGQ&s", 19.99m, "Barack Obama" },
+                    { 2, 1, "In a life filled with meaning and accomplishment, Michelle Obama has emerged as one of the most iconic and compelling women of our era.", "https://m.media-amazon.com/images/I/81cJTmFpG-L._AC_UF1000,1000_QL80_.jpg", 19.99m, "Michelle Obama" },
+                    { 3, 2, "In an empire divided into three rings, seventeen-year-old Talise is from the outer ring. This dangerous and crime-laden land has one constant… death.", "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1623351257i/58310267.jpg", 22.99m, "The Elements of The Crown" },
+                    { 4, 2, "A powerful curse forces the exiled Queen of Faerie to choose between ambition and humanity in this highly anticipated and jaw-dropping finale to The Folk of the Air trilogy from a #1 New York Times bestselling author.", "https://m.media-amazon.com/images/I/91nGoCptgmL._AC_UF1000,1000_QL80_.jpg", 23.99m, "The Queen of Nothing" },
+                    { 5, 3, "Covering the most important material taught in high school American history class, this essential review book breaks need-to-know content into accessible, easily understood lessons.", "https://images.penguinrandomhouse.com/cover/9780525570127", 29.99m, "U.S. History" },
+                    { 6, 3, "Glencoe World History is a full-survey world history program authored by a world-renowned historian, Jackson Spielvogel, and the National Geographic Society. ", "https://m.media-amazon.com/images/I/A1BUSpcfSWL._AC_UF1000,1000_QL80_.jpg", 29.99m, "World History" },
+                    { 7, 4, "These three kids are determined to get their parents to put down the ice cream, cake, and chicken fried steak to just try one bite of healthy whole foods.", "https://m.media-amazon.com/images/I/81L4z-NZt2L._AC_UF1000,1000_QL80_.jpg", 9.99m, "Just try one bite" },
+                    { 8, 4, "If a hungry little mouse shows up on your doorstep, you might want to give him a cookie. And if you give him a cookie, he'll ask for a glass of milk.", "https://m.media-amazon.com/images/I/813csV5cPqL.jpg", 7.49m, "If you give a Mouse a Cookie" },
+                    { 9, 5, "As a third-year Ph.D. candidate, Olive Smith doesn't believe in lasting romantic relationships--but her best friend does, and that's what got her into this situation.", "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1611937942l/56732449.jpg", 3.29m, "The Love Hypothesis" },
+                    { 10, 5, "Harriet and Wyn have been the perfect couple since they met in college—they go together like salt and pepper, honey and tea, lobster and rolls. Except, now—for reasons they’re still not discussing—they don’t.", "https://m.media-amazon.com/images/I/81jTZJQB4WL._AC_UF894,1000_QL80_.jpg", 8.99m, "Happy Place" },
+                    { 11, 6, "A murderous android discovers itself in All Systems Red, a tense science fiction adventure by Martha Wells that interrogates the roots of consciousness through Artificial Intelligence.", "https://m.media-amazon.com/images/I/81thdg0KmZL.jpg", 15.80m, "All Systems Red" },
+                    { 12, 6, "This book has everything! Aliens set on conquering earth! A determined heroine with a hidden stash of books! And the power of music and stories to give those with every reason to hate the power to love.", "https://m.media-amazon.com/images/I/81yhKr0TzXL.jpg", 16.49m, "The Sound of Stars" },
+                    { 13, 7, " In April 1992 a young man from a well-to-do family hitchhiked to Alaska and walked alone into the wilderness north of Mt. McKinley. Four months later, his decomposed body was found by a moose hunter. This is the unforgettable story of how Christopher Johnson McCandless came to die.", "https://m.media-amazon.com/images/I/61A+LdmTESL._AC_UF1000,1000_QL80_.jpg", 20.49m, "Into The Wild" },
+                    { 14, 7, "Chaya, outspoken hero, leads her friends and a gorgeous elephant on a noisy, fraught, joyous adventure through the jungle where revolution is stirring and leeches lurk. Will stealing the queen’s jewels be the beginning or the end of everything for the intrepid gang?", "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1563136258i/44906685.jpg", 8.49m, "The Girl Who Stole an Elephant" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

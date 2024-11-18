@@ -39,7 +39,6 @@ namespace BookstoreApp.Infrastructure.Data.SeedDb
         public Book IntoTheWild { get; set; }
         public Book TheGirlWhoStoleAnElephant { get; set; }
 
-        public ShoppingCart UserShoppingcart { get; set; }
 
         public SeedData()
         {

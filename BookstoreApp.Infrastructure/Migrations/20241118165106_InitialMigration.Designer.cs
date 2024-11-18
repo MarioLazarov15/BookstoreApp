@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookstoreApp.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241113172637_InitialMigration")]
+    [Migration("20241118165106_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace BookstoreApp.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -143,6 +143,134 @@ namespace BookstoreApp.Infrastructure.Migrations
                         {
                             t.HasComment("Book model");
                         });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            Description = "“My identity might begin with the fact of my race, but it didn’t, couldn't end there. At least that’s what I would choose to believe”\r\nDreams From My Father by Barack Obama (Paperback ISBN 9781782119258) book cover\r\nAvailable as	Paperback, eBook, Downloadable audio\r\n\r\nThis #1 New York Times bestselling",
+                            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNigBtJfs3f0sARUdACCC44A_QF7Vh0k_BGQ&s",
+                            Price = 19.99m,
+                            Title = "Barack Obama"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 1,
+                            Description = "In a life filled with meaning and accomplishment, Michelle Obama has emerged as one of the most iconic and compelling women of our era.",
+                            ImageUrl = "https://m.media-amazon.com/images/I/81cJTmFpG-L._AC_UF1000,1000_QL80_.jpg",
+                            Price = 19.99m,
+                            Title = "Michelle Obama"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 2,
+                            Description = "In an empire divided into three rings, seventeen-year-old Talise is from the outer ring. This dangerous and crime-laden land has one constant… death.",
+                            ImageUrl = "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1623351257i/58310267.jpg",
+                            Price = 22.99m,
+                            Title = "The Elements of The Crown"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 2,
+                            Description = "A powerful curse forces the exiled Queen of Faerie to choose between ambition and humanity in this highly anticipated and jaw-dropping finale to The Folk of the Air trilogy from a #1 New York Times bestselling author.",
+                            ImageUrl = "https://m.media-amazon.com/images/I/91nGoCptgmL._AC_UF1000,1000_QL80_.jpg",
+                            Price = 23.99m,
+                            Title = "The Queen of Nothing"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 3,
+                            Description = "Covering the most important material taught in high school American history class, this essential review book breaks need-to-know content into accessible, easily understood lessons.",
+                            ImageUrl = "https://images.penguinrandomhouse.com/cover/9780525570127",
+                            Price = 29.99m,
+                            Title = "U.S. History"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 3,
+                            Description = "Glencoe World History is a full-survey world history program authored by a world-renowned historian, Jackson Spielvogel, and the National Geographic Society. ",
+                            ImageUrl = "https://m.media-amazon.com/images/I/A1BUSpcfSWL._AC_UF1000,1000_QL80_.jpg",
+                            Price = 29.99m,
+                            Title = "World History"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryId = 4,
+                            Description = "These three kids are determined to get their parents to put down the ice cream, cake, and chicken fried steak to just try one bite of healthy whole foods.",
+                            ImageUrl = "https://m.media-amazon.com/images/I/81L4z-NZt2L._AC_UF1000,1000_QL80_.jpg",
+                            Price = 9.99m,
+                            Title = "Just try one bite"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryId = 4,
+                            Description = "If a hungry little mouse shows up on your doorstep, you might want to give him a cookie. And if you give him a cookie, he'll ask for a glass of milk.",
+                            ImageUrl = "https://m.media-amazon.com/images/I/813csV5cPqL.jpg",
+                            Price = 7.49m,
+                            Title = "If you give a Mouse a Cookie"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryId = 5,
+                            Description = "As a third-year Ph.D. candidate, Olive Smith doesn't believe in lasting romantic relationships--but her best friend does, and that's what got her into this situation.",
+                            ImageUrl = "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1611937942l/56732449.jpg",
+                            Price = 3.29m,
+                            Title = "The Love Hypothesis"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CategoryId = 5,
+                            Description = "Harriet and Wyn have been the perfect couple since they met in college—they go together like salt and pepper, honey and tea, lobster and rolls. Except, now—for reasons they’re still not discussing—they don’t.",
+                            ImageUrl = "https://m.media-amazon.com/images/I/81jTZJQB4WL._AC_UF894,1000_QL80_.jpg",
+                            Price = 8.99m,
+                            Title = "Happy Place"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CategoryId = 6,
+                            Description = "A murderous android discovers itself in All Systems Red, a tense science fiction adventure by Martha Wells that interrogates the roots of consciousness through Artificial Intelligence.",
+                            ImageUrl = "https://m.media-amazon.com/images/I/81thdg0KmZL.jpg",
+                            Price = 15.80m,
+                            Title = "All Systems Red"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CategoryId = 6,
+                            Description = "This book has everything! Aliens set on conquering earth! A determined heroine with a hidden stash of books! And the power of music and stories to give those with every reason to hate the power to love.",
+                            ImageUrl = "https://m.media-amazon.com/images/I/81yhKr0TzXL.jpg",
+                            Price = 16.49m,
+                            Title = "The Sound of Stars"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CategoryId = 7,
+                            Description = " In April 1992 a young man from a well-to-do family hitchhiked to Alaska and walked alone into the wilderness north of Mt. McKinley. Four months later, his decomposed body was found by a moose hunter. This is the unforgettable story of how Christopher Johnson McCandless came to die.",
+                            ImageUrl = "https://m.media-amazon.com/images/I/61A+LdmTESL._AC_UF1000,1000_QL80_.jpg",
+                            Price = 20.49m,
+                            Title = "Into The Wild"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CategoryId = 7,
+                            Description = "Chaya, outspoken hero, leads her friends and a gorgeous elephant on a noisy, fraught, joyous adventure through the jungle where revolution is stirring and leeches lurk. Will stealing the queen’s jewels be the beginning or the end of everything for the intrepid gang?",
+                            ImageUrl = "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1563136258i/44906685.jpg",
+                            Price = 8.49m,
+                            Title = "The Girl Who Stole an Elephant"
+                        });
                 });
 
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.Category", b =>
@@ -166,6 +294,43 @@ namespace BookstoreApp.Infrastructure.Migrations
                         {
                             t.HasComment("Book category");
                         });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Autobiography"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Fantasy"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "History"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Children's Books"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Romance"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Science Fiction"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Adventure"
+                        });
                 });
 
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.Country", b =>
@@ -188,6 +353,38 @@ namespace BookstoreApp.Infrastructure.Migrations
                     b.ToTable("Countries", t =>
                         {
                             t.HasComment("Country");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Bulgaria"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Greece"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Serbia"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Croatia"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Romania"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Albania"
                         });
                 });
 

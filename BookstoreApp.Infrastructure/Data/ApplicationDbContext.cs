@@ -13,6 +13,7 @@ namespace BookstoreApp.Infrastructure.Data
         }
 
         public DbSet<Book> Books { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<ShoppingCart> Shoppingcarts { get; set; }
@@ -26,7 +27,6 @@ namespace BookstoreApp.Infrastructure.Data
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new BookConfiguration());
             builder.ApplyConfiguration(new CountryConfiguration());
-            builder.ApplyConfiguration(new ShoppingcartConfiguration());
 
             builder.Entity<Book>()
                 .Property(b => b.Price)
