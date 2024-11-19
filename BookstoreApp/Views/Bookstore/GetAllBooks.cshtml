@@ -1,0 +1,28 @@
+﻿
+@model IEnumerable<BookstoreApp.Core.Models.Bookshop.BooksViewModel>
+@{
+    ViewBag.Title = "Books";
+}
+
+<div class="text-center row">
+    @foreach (var book in Model)
+    {
+        <div class="card col-4" style="width: 20rem;">
+            <img class="card-img-top" style="width: 18rem;"
+                 src="@book.ImageUrl" alt="Book Image">
+            <div class="card-body">
+
+                <h5 class="card-title mt-1">@book.Title</h5>
+                <p class="mb-0">Price: @book.Price</p>
+                <p>Genre: @book.Category</p>
+            </div>
+
+            <form class="input-group-sm" asp-route-movieId="@book.Id" asp-controller="Books" asp-action="AddToCollection" method="post">
+                <input type="submit" value="Mark as Read" class="fs-6 btn btn-success mb-3 p-2" />
+            </form>
+            <form class="input-group-sm" asp-route-movieId="@book.Id" asp-controller="Books" asp-action="AddToCollection" method="post">
+                <input type="submit" value="Mark as Read" class="fs-6 btn btn-success mb-3 p-2" />
+            </form>
+        </div>
+    }
+</div>
