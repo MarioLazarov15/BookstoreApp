@@ -1,4 +1,4 @@
-﻿using BookstoreApp.Core.Models.Bookshop;
+﻿using BookstoreApp.Core.Models.Bookstore;
 using BookstoreApp.Core.Services;
 using BookstoreApp.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;

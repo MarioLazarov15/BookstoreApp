@@ -1,0 +1,33 @@
+﻿@model BookstoreApp.Core.Models.Book.BookDetailsViewModel
+@{
+    ViewBag.Title = "Details of the book";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="card mb-3">
+        @if (!string.IsNullOrEmpty(@Model.ImageUrl))
+        {
+            <img src="@Model.ImageUrl" class="card-img-top img-fluid" style="max-height: 200px; object-fit: contain;" alt="Game Image">
+        }
+        else
+        {
+            <img src="~/img/PH.jpg" class="card-img-top img-fluid" style="max-height: 200px; object-fit: contain;" alt="Game Image">
+        }
+        <div class="card-body">
+            <h5 class="card-title">@Model.Title</h5>
+            <h5 class="card-title">@Model.Price$</h5>
+            <p class="card-text">@Model.Description</p>
+            <p class="card-text"><small class="text-muted">@Model.Category</small></p>
+        </div>
+
+        <a asp-controller="Bookstore" asp-action="GetAllBooks" class="btn btn-warning btn-dark-text btn-rounded mb-2 w-100 p-3 fw-bold">Other books</a>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
