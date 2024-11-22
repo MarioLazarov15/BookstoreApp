@@ -25,6 +25,13 @@
         </div>
 
         <a asp-controller="Bookstore" asp-action="GetAllBooks" class="btn btn-warning btn-dark-text btn-rounded mb-2 w-100 p-3 fw-bold">Other books</a>
+
+        <form method="post" asp-controller="Shoppingcart" asp-action="AddToShoppingcart">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-warning btn-sm mb-2 p-3 w-100 fw-bold rounded btn-dark-text">Add to cart<span class="ion-ios-cart"></span></button>
+            <input type="hidden" name="bookId" value="@Model.Id" />
+            <input type="hidden" name="amount" value="1" />
+        </form>
     </div>
 </div>
 

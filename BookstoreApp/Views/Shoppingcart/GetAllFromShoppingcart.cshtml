@@ -1,0 +1,121 @@
+﻿@model BookstoreApp.Core.Models.Shoppingcart.ShoppingcartViewModel
+
+<div class="hero-wrap hero-bread py-5" style="background-image: url('https://t4.ftcdn.net/jpg/06/08/82/93/360_F_608829373_B2rUg3ijHL9vojzGFIatAIaCiRQDwzDj.jpg');">
+	<div class="container">
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
+			<div class="col-md-9 ftco-animate text-center">
+				<h1 class="mb-0 bread">My Cart</h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+<section class="ftco-section ftco-cart">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 ftco-animate">
+				<div class="cart-list">
+					@if (Model.Products.Count() == 0)
+					{
+						<p>Your shopping cart is empty.</p>
+						<form method="get" asp-action="GetAllBooks" asp-controller="Bookstore">
+							<button class="btn btn-primary add-products">Add books</button>
+						</form>
+					}
+					else
+					{
+						<table class="table">
+							<thead class="thead-primary">
+								<tr class="text-center">
+									<th>&nbsp;</th>
+									<th>&nbsp;</th>
+									<th>Product name</th>
+									<th>Price</th>
+									<th>Quantity</th>
+									<th>Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var book in Model.Products)
+								{
+									<tr class="text-center">
+										<td class="product-remove">
+											<form method="post" asp-action="RemoveFromShoppingcart" asp-controller="Shoppingcart">
+												@Html.AntiForgeryToken()
+												<button type="submit" name="productId" value="@book.Id" class="product-remove"><span class="ion-ios-close"></span></button>
+												<input type="hidden" name="shoppingcartId" value="@Model.IdentityUser.Id" />
+											</form>
+										</td>
+										<td class="image-prod"><div class="img" style="background-image:url(@book.ImageUrl);"></div></td>
+
+										<td class="product-name">
+											<h3>@book.Title</h3>
+										</td>
+
+										<td class="price">$@book.Price</td>
+
+										<td class="quantity">
+											<div>
+												<p class="mb-0">@book.Amount</p>
+											</div>
+										</td>
+
+										<td class="total">$@(book.Amount * book.Price)</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+@if (Model.Products.Count() > 0)
+{
+	<div class="container">
+		<div class="row justify-content-end">
+			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+				<div class="cart-total mb-3">
+					<h3>Cart Totals</h3>
+					<p class="d-flex">
+						<span>Subtotal</span>
+						<span>$@Model.Total</span>
+					</p>
+					<p class="d-flex">
+						<span>Delivery</span>
+						@if (Model.Total < 50)
+						{
+							<span>
+								$5.90
+							</span>
+						}
+						else
+						{
+							<span class="free-delivery">FREE</span>
+						}
+					</p>
+					<hr>
+					<p class="d-flex total-price">
+						<span>Total</span>
+						@if (Model.Total < 50)
+						{
+							<span>$@(Model.Total + (decimal)5.90)</span>
+						}
+						else
+						{
+							<span>$@Model.Total</span>
+						}
+					</p>
+				</div>
+				<p>
+					<a asp-action="Index" asp-controller="Checkout" class="btn btn-warning btn-warning py-3 mb-2 w-100 fw-bold rounded btn-dark-text">Proceed to Checkout</a>
+				</p>
+				<p>
+					<a asp-action="GetAllBooks" asp-controller="Bookstore" class="btn btn-warning btn-warning py-3 mb-2 w-100 fw-bold rounded btn-dark-text">Continue shopping</a>
+				</p>
+			</div>
+		</div>
+	</div>
+}

@@ -16,10 +16,17 @@
                 <p class="mb-0">Price: @book.Price$</p>
                 <p>Genre: @book.Category</p>
             </div>
-
+            <form method="post" asp-controller="Shoppingcart" asp-action="AddToShoppingcart">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-warning btn-sm mb-2 w-100 fw-bold rounded btn-dark-text">Add to cart<span class="ion-ios-cart"></span></button>
+                <input type="hidden" name="bookId" value="@book.Id" />
+                <input type="hidden" name="amount" value="1" />
+            </form>
             <div class="col-12 px-1">
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id" class="btn btn-warning btn-sm mb-2 w-100 fw-bold rounded btn-dark-text">Details</a>
             </div>
+
+
         </div>
     }
 </div>
