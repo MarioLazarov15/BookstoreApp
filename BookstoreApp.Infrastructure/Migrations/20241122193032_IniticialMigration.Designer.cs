@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookstoreApp.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241118172822_IniticialMigration")]
+    [Migration("20241122193032_IniticialMigration")]
     partial class IniticialMigration
     {
         /// <inheritdoc />
@@ -398,12 +398,9 @@ namespace BookstoreApp.Infrastructure.Migrations
 
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.ShoppingCart", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)")
                         .HasComment("Shopping cart identifier");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Total")
                         .HasPrecision(18, 2)
@@ -417,8 +414,8 @@ namespace BookstoreApp.Infrastructure.Migrations
 
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.ShoppingcartBook", b =>
                 {
-                    b.Property<int>("ShoppingcartId")
-                        .HasColumnType("int")
+                    b.Property<string>("ShoppingcartId")
+                        .HasColumnType("nvarchar(450)")
                         .HasComment("Shopping cart identifier");
 
                     b.Property<int>("BookId")

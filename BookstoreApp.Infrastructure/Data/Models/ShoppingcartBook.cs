@@ -13,7 +13,7 @@ namespace BookstoreApp.Infrastructure.Data.Models
     {
         [ForeignKey(nameof(ShoppingcartId))]
         [Comment("Shopping cart identifier")]
-        public int ShoppingcartId { get; set; }
+        public string ShoppingcartId { get; set; } = null!;
         public ShoppingCart Shoppingcart { get; set; } = null!;
 
         [ForeignKey(nameof(Book))]

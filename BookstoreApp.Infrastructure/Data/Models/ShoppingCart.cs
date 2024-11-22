@@ -12,7 +12,7 @@ namespace BookstoreApp.Infrastructure.Data.Models
     {
         [Key]
         [Comment("Shopping cart identifier")]
-        public int Id { get; set; }
+        public string Id { get; set; } = null!;
 
         [Comment("Shopping cart total")]
         public  decimal Total { get; set; }

@@ -84,8 +84,7 @@ namespace BookstoreApp.Infrastructure.Migrations
                 name: "Shoppingcarts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false, comment: "Shopping cart identifier")
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "Shopping cart identifier"),
                     Total = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false, comment: "Shopping cart total")
                 },
                 constraints: table =>
@@ -253,7 +252,7 @@ namespace BookstoreApp.Infrastructure.Migrations
                 name: "ShoppingcartsBooks",
                 columns: table => new
                 {
-                    ShoppingcartId = table.Column<int>(type: "int", nullable: false, comment: "Shopping cart identifier"),
+                    ShoppingcartId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "Shopping cart identifier"),
                     BookId = table.Column<int>(type: "int", nullable: false, comment: "Product identifier"),
                     ProductAmount = table.Column<int>(type: "int", nullable: false, comment: "Amount of certain book")
                 },
