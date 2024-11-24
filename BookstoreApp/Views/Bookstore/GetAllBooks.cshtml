@@ -10,11 +10,11 @@
 			<div class="col-md-4 ml-2">
 				@if (Model.SearchTerm != "" && Model.SearchTerm != null)
 				{
-					<input class="form-control form-control-sm mr-sm-2" type="text" aria-label="Search" name="searchTerm" value="@Model.SearchTerm">
+					<input class="form-control form-control-sm mr-sm-2" type="text" aria-label="Search..." name="searchTerm" value="@Model.SearchTerm">
 				}
 				else
 				{
-					<input class="form-control form-control-sm mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="searchTerm">
+					<input class="form-control form-control-sm mr-sm-2" type="text" placeholder="Search..." aria-label="Search" name="searchTerm">
 				}
 				<button type="submit" class="btn btn-warning btn-sm mb-2 w-100 fw-bold rounded btn-dark-text">Search</button>
 			</div>
@@ -24,38 +24,38 @@
 					<select name="sorting" class="form-control sort mt-0" onchange="this.form.submit()">
 						@if (Model.Sorting.ToString() == "AscendingByName")
 						{
-							<option value="AscendingByName" selected>A-Z</option>
+							<option value="AscendingByName" selected>Title(A-Z)</option>
 						}
 						else
 						{
-							<option value="AscendingByName">A-Z</option>
+							<option value="AscendingByName">Title(A-Z)</option>
 						}
 
 						@if (Model.Sorting.ToString() == "DescendingByName")
 						{
-							<option value="DescendingByName" selected>Z-A</option>
+							<option value="DescendingByName" selected>Title(Z-A)</option>
 						}
 						else
 						{
-							<option value="DescendingByName">Z-A</option>
+							<option value="DescendingByName">Title(Z-A)</option>
 						}
 
 						@if (Model.Sorting.ToString() == "AscendingByPrice")
 						{
-							<option value="AscendingByPrice" selected>Price ↑</option>
+							<option value="AscendingByPrice" selected>Price(Low>High)</option>
 						}
 						else
 						{
-							<option value="AscendingByPrice">Price ↑</option>
+							<option value="AscendingByPrice">Price(Low>High)</option>
 						}
 
 						@if (Model.Sorting.ToString() == "DescendingByPrice")
 						{
-							<option value="DescendingByPrice" selected>Price ↓</option>
+							<option value="DescendingByPrice" selected>Price(High>Low)</option>
 						}
 						else
 						{
-							<option value="DescendingByPrice">Price ↓</option>
+							<option value="DescendingByPrice">Price(High>Low)</option>
 						}
 					</select>
 				</div>
