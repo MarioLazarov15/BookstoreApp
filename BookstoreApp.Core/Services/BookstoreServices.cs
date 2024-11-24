@@ -1,6 +1,8 @@
 ﻿using BookstoreApp.Core.Contracts;
+using BookstoreApp.Core.Models.Book;
 using BookstoreApp.Core.Models.Bookstore;
 using BookstoreApp.Infrastructure.Data;
+using BookstoreApp.Infrastructure.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -19,18 +21,44 @@ namespace BookstoreApp.Core.Services
             this.context = context;
         }
 
-        public async Task<IEnumerable<BooksViewModel>> GetAllBooksAsync()
-        {
-            IEnumerable<BooksViewModel> books = await context.Books.Select(book => new BooksViewModel
-            {
-                Id= book.Id,
-                Title = book.Title,
-                ImageUrl = book.ImageUrl,
-                Price = book.Price,
-                Category = book.Category.Name
-            }).ToListAsync();
-            return books;
-        }
 
-    }
+		public async Task<List<BookDetailsViewModel>> GetAllBooksAsync(string searchTerm, BookSorting sorting)
+		{
+			var productsQuery = context.Books.AsQueryable();
+
+			if (!string.IsNullOrWhiteSpace(searchTerm))
+			{
+				productsQuery = productsQuery
+					.Where(product => product.Title.ToLower().Contains(searchTerm.ToLower()));
+			}
+
+			switch (sorting)
+			{
+				case BookSorting.AscendingByPrice:
+					productsQuery = productsQuery.OrderBy(p => p.Price);
+					break;
+				case BookSorting.DescendingByPrice:
+					productsQuery = productsQuery.OrderByDescending(p => p.Price);
+					break;
+				case BookSorting.AscendingByName:
+					productsQuery = productsQuery.OrderBy(p => p.Title);
+					break;
+				case BookSorting.DescendingByName:
+					productsQuery = productsQuery.OrderByDescending(p => p.Title);
+					break;
+			}
+			var books = await productsQuery
+				.Select(product => new BookDetailsViewModel
+				{
+					Id = product.Id,
+					Title = product.Title,
+					Price = product.Price,
+					Description = product.Description,
+					ImageUrl = product.ImageUrl,
+					Category = product.Category.Name
+				})
+				.ToListAsync();
+			return books;
+		}
+	}
 }
