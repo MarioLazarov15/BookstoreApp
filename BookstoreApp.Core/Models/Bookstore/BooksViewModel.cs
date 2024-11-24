@@ -1,4 +1,5 @@
-﻿using BookstoreApp.Infrastructure.Data.Models;
+﻿using BookstoreApp.Core.Models.Book;
+using BookstoreApp.Infrastructure.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,12 @@ namespace BookstoreApp.Core.Models.Bookstore
 {
     public class BooksViewModel
     {
-        public int Id { get; set; }
-
-        public string Title { get; set; } = null!;
-
-        public string? ImageUrl { get; set; }
-
-        public decimal Price { get; set; }
-
-        public string Category { get; set; } = null!;
+		public BooksViewModel(List<BookDetailsViewModel> books)
+		{
+			Books = books;
+		}
+		public List<BookDetailsViewModel> Books { get; set; }
+		public string SearchTerm { get; set; }
+		public BookSorting Sorting { get; set; }
 	}
 }
