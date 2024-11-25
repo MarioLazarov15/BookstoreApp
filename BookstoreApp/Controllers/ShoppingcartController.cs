@@ -61,11 +61,8 @@ namespace BookstoreApp.Controllers
         public async Task<IActionResult> RemoveFromShoppingcart(int productId)
         {
             var user = await userManager.GetUserAsync(User);
-            var shoppingcartProduct = await context.ShoppingcartsBooks
-                .FirstOrDefaultAsync(scp => scp.BookId == productId && scp.ShoppingcartId == user.Id);
 
-            context.ShoppingcartsBooks.Remove(shoppingcartProduct);
-            await context.SaveChangesAsync();
+            await shoppingcartServices.RemoveBookFromCartAsync(productId, user.Id);
 
 			return RedirectToAction("GetAllFromShoppingcart", "Shoppingcart");
         }

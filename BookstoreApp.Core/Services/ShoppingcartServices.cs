@@ -93,6 +93,7 @@ namespace BookstoreApp.Core.Services
 
 			var shoppingcartProduct = await context.ShoppingcartsBooks
 				.FirstOrDefaultAsync(scp => scp.BookId == bookId && scp.ShoppingcartId == userId);
+
 			context.ShoppingcartsBooks.Remove(shoppingcartProduct);
 			await context.SaveChangesAsync();
 		}
