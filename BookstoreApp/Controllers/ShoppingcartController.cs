@@ -13,13 +13,11 @@ namespace BookstoreApp.Controllers
     {
         private readonly UserManager<IdentityUser> userManager;
 		private readonly IShoppingcartServices shoppingcartServices;
-		private readonly ApplicationDbContext context;
         
-		public ShoppingcartController(IShoppingcartServices shoppingcartServices, UserManager<IdentityUser> userManager, ApplicationDbContext context)
+		public ShoppingcartController(IShoppingcartServices shoppingcartServices, UserManager<IdentityUser> userManager)
         {
             this.userManager = userManager;
             this.shoppingcartServices = shoppingcartServices;
-            this.context = context;
         }
 
         public async Task<IActionResult> GetAllFromShoppingcart()
