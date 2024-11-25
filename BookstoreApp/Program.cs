@@ -14,6 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IBookstoreServices, BookstoreServices>();
+builder.Services.AddScoped<IBookServices, BookServices>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

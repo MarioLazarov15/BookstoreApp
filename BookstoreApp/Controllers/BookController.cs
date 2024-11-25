@@ -1,4 +1,6 @@
-﻿using BookstoreApp.Core.Models.Book;
+﻿using BookstoreApp.Core.Contracts;
+using BookstoreApp.Core.Models.Book;
+using BookstoreApp.Core.Services;
 using BookstoreApp.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,36 +9,22 @@ namespace BookstoreApp.Controllers
 {
 	public class BookController : Controller
 	{
-		private readonly ApplicationDbContext context;
-
-		public BookController(ApplicationDbContext context)
+		private readonly IBookServices bookServices;
+		public BookController(
+			IBookServices bookServices)
 		{
-			this.context = context;
-		}
-		public IActionResult Index()
-		{
-			return View();
+			this.bookServices = bookServices;
 		}
 		public async Task<IActionResult> Details(int id)
 		{
-			BookDetailsViewModel? game = await context.Books
-				.Where(g => g.Id == id)
-				.Select(g => new BookDetailsViewModel
-				{
-					Id = g.Id,
-					Title = g.Title,
-					Description = g.Description,
-					ImageUrl = g.ImageUrl,
-					Price = g.Price,
-					Category = g.Category.Name
-				}).FirstOrDefaultAsync();
+			var book = await bookServices.GetBookDetailsAsync(id);
 
-			if (game == null)
+			if (book == null)
 			{
 				return BadRequest();
 			}
 
-			return View(game);
+			return View(book);
 		}
 	}
 }

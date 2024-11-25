@@ -48,14 +48,14 @@ namespace BookstoreApp.Core.Services
 					break;
 			}
 			var books = await productsQuery
-				.Select(product => new BookDetailsViewModel
+				.Select(book => new BookDetailsViewModel
 				{
-					Id = product.Id,
-					Title = product.Title,
-					Price = product.Price,
-					Description = product.Description,
-					ImageUrl = product.ImageUrl,
-					Category = product.Category.Name
+					Id = book.Id,
+					Title = book.Title,
+					Price = book.Price,
+					Description = book.Description,
+					ImageUrl = book.ImageUrl,
+					Category = book.Category.Name
 				})
 				.ToListAsync();
 			return books;
