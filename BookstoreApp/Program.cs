@@ -16,6 +16,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IBookstoreServices, BookstoreServices>();
 builder.Services.AddScoped<IBookServices, BookServices>();
 builder.Services.AddScoped<IShoppingcartServices, ShoppingcartServices>();
+builder.Services.AddScoped<ICheckoutService, CheckoutService>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

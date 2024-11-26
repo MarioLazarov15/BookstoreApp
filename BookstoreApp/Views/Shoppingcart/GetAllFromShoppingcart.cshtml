@@ -17,10 +17,11 @@
 				<div class="cart-list">
 					@if (Model.Products.Count() == 0)
 					{
-						<p>Your shopping cart is empty.</p>
-						<form method="get" asp-action="GetAllBooks" asp-controller="Bookstore">
-							<button class="btn btn-primary add-products">Add books</button>
-						</form>
+						<h1>Your shopping cart is empty.</h1>
+
+						<p>
+							<a asp-action="GetAllBooks" asp-controller="Bookstore" class="btn btn-warning btn-warning py-3 mb-2 w-100 fw-bold rounded btn-dark-text">Add books</a>
+						</p>
 					}
 					else
 					{
@@ -93,7 +94,7 @@
 						}
 						else
 						{
-							<span class="free-delivery">FREE</span>
+							<span class="free-delivery">$0.00</span>
 						}
 					</p>
 					<hr>

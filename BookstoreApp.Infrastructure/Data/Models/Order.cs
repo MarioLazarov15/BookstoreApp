@@ -26,12 +26,6 @@ namespace BookstoreApp.Infrastructure.Data.Models
         public string LastName { get; set; } = null!;
 
         [Required]
-        [ForeignKey(nameof(Country))]
-        [Comment("Country of the buyer")]
-        public int CountryId { get; set; }
-        public Country Country { get; set; } = null!;
-
-        [Required]
         [Comment("City of the buyer")]
         [MaxLength(Constants.DataConstants.Order.CityNameMaxLength)]
         public string City { get; set; } = null!;
