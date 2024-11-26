@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookstoreApp.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241122193032_IniticialMigration")]
+    [Migration("20241126172723_IniticialMigration")]
     partial class IniticialMigration
     {
         /// <inheritdoc />
@@ -313,16 +313,13 @@ namespace BookstoreApp.Infrastructure.Migrations
 
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.Order", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)")
                         .HasComment("Order identifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
                     b.Property<string>("AdditionalInfo")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(750)
+                        .HasColumnType("nvarchar(750)")
                         .HasComment("Additional Information about adress");
 
                     b.Property<string>("City")
@@ -374,8 +371,8 @@ namespace BookstoreApp.Infrastructure.Migrations
 
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.OrderBook", b =>
                 {
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int")
+                    b.Property<string>("OrderId")
+                        .HasColumnType("nvarchar(450)")
                         .HasComment("Order identifier");
 
                     b.Property<int>("BookId")
@@ -438,8 +435,8 @@ namespace BookstoreApp.Infrastructure.Migrations
 
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.UserOrder", b =>
                 {
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int")
+                    b.Property<string>("OrderId")
+                        .HasColumnType("nvarchar(450)")
                         .HasComment("Order identifier");
 
                     b.Property<string>("UserId")

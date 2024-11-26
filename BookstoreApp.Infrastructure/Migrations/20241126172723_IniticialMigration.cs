@@ -226,8 +226,7 @@ namespace BookstoreApp.Infrastructure.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false, comment: "Order identifier")
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "Order identifier"),
                     FirstName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false, comment: "First name of the buyer"),
                     LastName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false, comment: "Last name of the buyer"),
                     CountryId = table.Column<int>(type: "int", nullable: false, comment: "Country of the buyer"),
@@ -235,7 +234,7 @@ namespace BookstoreApp.Infrastructure.Migrations
                     ZipCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false, comment: "Zip code of the buyer"),
                     PhoneNumber = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false, comment: "Phone number of the buyer"),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "Email of the buyer"),
-                    AdditionalInfo = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true, comment: "Additional Information about adress")
+                    AdditionalInfo = table.Column<string>(type: "nvarchar(750)", maxLength: 750, nullable: true, comment: "Additional Information about adress")
                 },
                 constraints: table =>
                 {
@@ -279,7 +278,7 @@ namespace BookstoreApp.Infrastructure.Migrations
                 columns: table => new
                 {
                     BookId = table.Column<int>(type: "int", nullable: false, comment: "Book identifier"),
-                    OrderId = table.Column<int>(type: "int", nullable: false, comment: "Order identifier"),
+                    OrderId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "Order identifier"),
                     Amount = table.Column<int>(type: "int", nullable: false, comment: "Book amount")
                 },
                 constraints: table =>
@@ -305,7 +304,7 @@ namespace BookstoreApp.Infrastructure.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "User identifier"),
-                    OrderId = table.Column<int>(type: "int", nullable: false, comment: "Order identifier")
+                    OrderId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "Order identifier")
                 },
                 constraints: table =>
                 {

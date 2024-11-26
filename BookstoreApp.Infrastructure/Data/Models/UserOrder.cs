@@ -19,7 +19,7 @@ namespace BookstoreApp.Infrastructure.Data.Models
 
         [ForeignKey(nameof(Order))]
         [Comment("Order identifier")]
-        public int OrderId { get; set; }
+        public string OrderId { get; set; }
         public Order Order { get; set; } = null!;
     }
 }

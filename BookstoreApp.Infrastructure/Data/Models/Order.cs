@@ -13,9 +13,9 @@ namespace BookstoreApp.Infrastructure.Data.Models
     {
         [Key]
         [Comment("Order identifier")]
-        public int Id { get; set; }
+        public string Id { get; set; } = null!;
 
-        [Required]
+		[Required]
         [Comment("First name of the buyer")]
         [MaxLength(Constants.DataConstants.Order.FirstNameMaxLength)]
         public string FirstName { get; set; } = null!;

@@ -30,12 +30,18 @@ namespace BookstoreApp.Infrastructure.Constants
         public static class Order
         {
             public const int FirstNameMaxLength = 25;
+            public const int FirstNameMinLength = 2;
             public const int LastNameMaxLength = 25;
+            public const int LastNameMinLength = 2;
             public const int CityNameMaxLength = 85;
+            public const int CityNameMinLength = 4;
             public const int ZipCodeMaxLength = 10;
+            public const int ZipCodeMinLength = 3;
             public const int PhoneNumberMaxLength = 15;
+            public const int PhoneNumberMinLength = 7;
             public const int EmailMaxLength = 50;
-            public const int AdditionalInfoMaxLength = 500;
+            public const int EmailMinLength = 5;
+            public const int AdditionalInfoMaxLength = 750;
         }
     }
 }
