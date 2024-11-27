@@ -20,8 +20,15 @@ builder.Services.AddScoped<ICheckoutService, CheckoutService>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>((options =>
+{
+	options.SignIn.RequireConfirmedAccount = false;
+	options.Password.RequireNonAlphanumeric = true;
+	options.Password.RequireDigit = true;
+	options.Password.RequireUppercase = true;
+	options.Password.RequiredLength = 8;
+}))
+.AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -33,9 +40,10 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+	app.UseExceptionHandler("/Home/Error/500");
+	app.UseStatusCodePagesWithRedirects("/Home/Error?statuscode={0}");
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();
