@@ -35,5 +35,11 @@ namespace BookstoreApp.Core.Services
 
 			return book;
 		}
+		public async Task RemoveBookAsync(int id)
+		{
+			var book = await context.Books.FirstOrDefaultAsync(b => b.Id == id);
+			context.Books.Remove(book);
+			await context.SaveChangesAsync();
+		}
 	}
 }

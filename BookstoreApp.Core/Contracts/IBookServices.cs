@@ -11,5 +11,7 @@ namespace BookstoreApp.Core.Contracts
 	public interface IBookServices
 	{
 		Task<BookDetailsViewModel?> GetBookDetailsAsync(int id);
-	}
+		Task RemoveBookAsync(int id);
+
+    }
 }

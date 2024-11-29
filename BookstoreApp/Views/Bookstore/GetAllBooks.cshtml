@@ -1,4 +1,5 @@
-﻿
+﻿@using BookstoreApp.Extensions
+
 @model BookstoreApp.Core.Models.Bookstore.BooksViewModel
 @{
     ViewBag.Title = "Books";
@@ -75,7 +76,7 @@
 
                 <h5 class="card-title mt-1">@book.Title</h5>
                 <p class="mb-0">Price: @book.Price$</p>
-                <p>Genre: @book.Category</p>
+                <p>Genre: @book.Category.</p>
             </div>
             <form method="post" asp-controller="Shoppingcart" asp-action="AddToShoppingcart">
                 @Html.AntiForgeryToken()
@@ -87,6 +88,12 @@
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id" class="btn btn-warning btn-sm mb-2 w-100 fw-bold rounded btn-dark-text">Details</a>
             </div>
 
+			@if (User.IsAdmin())
+			{
+				<div class="col-12 px-1">
+					<a asp-controller="Book" asp-action="Remove" asp-route-id="@book.Id" class="btn btn-warning btn-sm mb-2 w-100 fw-bold rounded btn-dark-text">Stop the book from being sold</a>
+				</div>
+			}
 
         </div>
     }

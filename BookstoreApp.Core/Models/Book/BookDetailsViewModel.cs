@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using BookstoreApp.Infrastructure.Constants;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,14 +12,22 @@ namespace BookstoreApp.Core.Models.Book
 	{
 		public int Id { get; set; }
 
-		public string Title { get; set; } = string.Empty;
+        [Required]
+        [StringLength(DataConstants.Book.TitleMaxLength)]
+        public string Title { get; set; } = string.Empty;
 
-		public string? Description { get; set; }
+
+        [StringLength(DataConstants.Book.DescriptionMaxLength)]
+        public string? Description { get; set; }
 
 		public string? ImageUrl { get; set; }
 
-		public decimal Price { get; set; }
 
-		public string Category { get; set; } = string.Empty;
+        [Required]
+        public decimal Price { get; set; }
+
+
+        [Required]
+        public string Category { get; set; } = string.Empty;
 	}
 }

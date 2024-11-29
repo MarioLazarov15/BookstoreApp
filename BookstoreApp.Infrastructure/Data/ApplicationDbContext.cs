@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace BookstoreApp.Infrastructure.Data
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
@@ -22,7 +23,7 @@ namespace BookstoreApp.Infrastructure.Data
         public DbSet<UserOrder> UsersOrders { get; set; }
         public DbSet<OrderBook> OrdersBooks { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected async override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new BookConfiguration());

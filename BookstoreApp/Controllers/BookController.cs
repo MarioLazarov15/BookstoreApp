@@ -26,5 +26,11 @@ namespace BookstoreApp.Controllers
 
 			return View(book);
 		}
+		public async Task<IActionResult> Remove(int id)
+		{
+			await bookServices.RemoveBookAsync(id);
+
+            return RedirectToAction("GetAllBooks", "Bookstore");
+        }
 	}
 }

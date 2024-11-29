@@ -1,4 +1,5 @@
-﻿@model BookstoreApp.Core.Models.Book.BookDetailsViewModel
+﻿@using BookstoreApp.Extensions
+@model BookstoreApp.Core.Models.Book.BookDetailsViewModel
 @{
     ViewBag.Title = "Details of the book";
 }
@@ -23,6 +24,12 @@
             <p class="card-text">@Model.Description</p>
             <p class="card-text"><small class="text-muted">@Model.Category</small></p>
         </div>
+        @if (User.IsAdmin())
+        {
+            <div class="col-12 px-1">
+                <a asp-controller="Book" asp-action="Remove" asp-route-id="@Model.Id" class="btn btn-warning btn-dark-text btn-rounded mb-2 w-100 p-3 fw-bold">Stop the book from being sold</a>
+            </div>
+        }
 
         <a asp-controller="Bookstore" asp-action="GetAllBooks" class="btn btn-warning btn-dark-text btn-rounded mb-2 w-100 p-3 fw-bold">Other books</a>
 
