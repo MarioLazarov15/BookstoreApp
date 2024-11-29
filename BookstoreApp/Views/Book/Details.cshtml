@@ -29,13 +29,16 @@
             <div class="col-12 px-1">
                 <a asp-controller="Book" asp-action="Remove" asp-route-id="@Model.Id" class="btn btn-warning btn-dark-text btn-rounded mb-2 w-100 p-3 fw-bold">Stop the book from being sold</a>
             </div>
+            <div class="col-12 px-1">
+                <a asp-controller="Admin" asp-action="ModifyBook" asp-route-id="@Model.Id" class="btn btn-warning btn-dark-text btn-rounded mb-2 w-100 p-3 fw-bold">Edit book</a>
+            </div>
         }
 
         <a asp-controller="Bookstore" asp-action="GetAllBooks" class="btn btn-warning btn-dark-text btn-rounded mb-2 w-100 p-3 fw-bold">Other books</a>
 
         <form method="post" asp-controller="Shoppingcart" asp-action="AddToShoppingcart">
             @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-warning btn-sm mb-2 p-3 w-100 fw-bold rounded btn-dark-text">Add to cart<span class="ion-ios-cart"></span></button>
+            <button type="submit" class="btn btn-warning btn-dark-text btn-rounded mb-2 w-100 p-3 fw-bold">Add to cart<span class="ion-ios-cart"></span></button>
             <input type="hidden" name="bookId" value="@Model.Id" />
             <input type="hidden" name="amount" value="1" />
         </form>

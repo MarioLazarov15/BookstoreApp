@@ -35,7 +35,7 @@ namespace BookstoreApp.Core.Models.Admin
         public int CategoryId { get; set; }
 
         [Required]
-        public IEnumerable<CategoriesViewModel> Categories { get; set; }
+        public IEnumerable<CategoriesViewModel>? Categories { get; set; }
           = new List<CategoriesViewModel>();
     }
 }

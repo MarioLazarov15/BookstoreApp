@@ -3,6 +3,7 @@ using BookstoreApp.Core.Models.Admin;
 using BookstoreApp.Core.Models.Book;
 using BookstoreApp.Core.Models.Shoppingcart;
 using BookstoreApp.Extensions;
+using BookstoreApp.Infrastructure.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookstoreApp.Controllers
@@ -36,7 +37,7 @@ namespace BookstoreApp.Controllers
             await adminService.ModifyBook(id, bookExtendedViewModel.Title, bookExtendedViewModel.Price,
                 bookExtendedViewModel.ImageUrl, bookExtendedViewModel.Description, bookExtendedViewModel.CategoryId);
 
-            return RedirectToAction("ProductInfo", "Product", new { id });
+            return RedirectToAction("Details", "Book", new { id });
         }
 
         [HttpGet]
@@ -48,12 +49,11 @@ namespace BookstoreApp.Controllers
             }
 
             var book = await adminService.GetBookById(id);
-
-            if (book == null)
+			var categories = await adminService.GetAllCategories();
+			if (book == null)
             {
                 return BadRequest();
             }
-
 
             var viewModel = new AdminViewModel
             {
@@ -61,7 +61,8 @@ namespace BookstoreApp.Controllers
                 Price = book.Price,
                 ImageUrl = book.ImageUrl,
                 Description = book.Description,
-                CategoryId = book.Category.Id
+                CategoryId = book.Category.Id,
+                Categories = categories
             };
 
             return View(viewModel);

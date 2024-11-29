@@ -52,7 +52,20 @@ namespace BookstoreApp.Core.Services
                 return null;
             }
 
-            return book;
+			if (book.Category == null)
+			{
+
+				Category category = context.Categories.FirstOrDefault(c => c.Id == book.CategoryId);
+				if (category == null)
+				{
+					return null;
+				}
+				else
+				{
+					book.Category = category;
+				}
+			}
+			return book;
         }
 
         public async Task ModifyBook(int id, string title, decimal price, string imageUrl, string description, int categoryId)
