@@ -50,7 +50,7 @@ namespace BookstoreApp.Core.Models.Checkout
 		[EmailAddress(ErrorMessage = "Invalid email address.")]
         public string Email { get; set; } = null!;
 
-		[Required]
+
 		[Display(Name = "Country")]
 		public int CountryId { get; set; }
 		public IEnumerable<CountryViewModel>? Countries { get; set; }
