@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookstoreApp.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241126172723_IniticialMigration")]
+    [Migration("20241202092254_IniticialMigration")]
     partial class IniticialMigration
     {
         /// <inheritdoc />
@@ -669,7 +669,7 @@ namespace BookstoreApp.Infrastructure.Migrations
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.Order", b =>
                 {
                     b.HasOne("BookstoreApp.Infrastructure.Data.Models.Country", "Country")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -795,11 +795,6 @@ namespace BookstoreApp.Infrastructure.Migrations
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.Category", b =>
                 {
                     b.Navigation("Books");
-                });
-
-            modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.Country", b =>
-                {
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.Order", b =>

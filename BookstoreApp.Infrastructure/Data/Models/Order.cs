@@ -29,8 +29,14 @@ namespace BookstoreApp.Infrastructure.Data.Models
         [Comment("City of the buyer")]
         [MaxLength(Constants.DataConstants.Order.CityNameMaxLength)]
         public string City { get; set; } = null!;
-
+        
         [Required]
+        [Comment("Country of the buyer")]
+		[ForeignKey(nameof(Category))]
+		public int CountryId { get; set; }
+		public Country Country { get; set; } = null!;
+
+		[Required]
         [Comment("Zip code of the buyer")]
         [MaxLength(Constants.DataConstants.Order.ZipCodeMaxLength)]
         public string ZipCode { get; set; } = null!;

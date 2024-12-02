@@ -1,4 +1,5 @@
 ﻿using BookstoreApp.Core.Models.Checkout;
+using BookstoreApp.Core.Models.Country;
 using BookstoreApp.Core.Models.Shoppingcart;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,7 @@ namespace BookstoreApp.Core.Contracts
 		Task<ShoppingcartViewModel> Index(string shoppingcartId);
 		Task ProcessCheckout(string shoppingcartId, CheckoutFormModel checkoutFormModel);
 		void OrderDone(string shoppingcartId);
-	}
+		Task<IEnumerable<CountryViewModel>> GetAllCountries();
+
+    }
 }

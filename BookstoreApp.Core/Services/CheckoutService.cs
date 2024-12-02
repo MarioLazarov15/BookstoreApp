@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BookstoreApp.Core.Models.Checkout;
+using BookstoreApp.Core.Models.Category;
+using BookstoreApp.Core.Models.Country;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookstoreApp.Core.Services
 {
@@ -51,7 +54,9 @@ namespace BookstoreApp.Core.Services
 				PhoneNumber = checkoutFormModel.Phone.ToString(),
 				City = checkoutFormModel.City,
 				ZipCode = checkoutFormModel.Postcode.ToString(),
-				AdditionalInfo = checkoutFormModel.AdditionalInfo
+				AdditionalInfo = checkoutFormModel.AdditionalInfo,
+				CountryId = checkoutFormModel.CountryId
+
 			};
 
 			var shoppingcartProducts = context.ShoppingcartsBooks.Where(scp => scp.ShoppingcartId == shoppingcartId);
@@ -88,5 +93,14 @@ namespace BookstoreApp.Core.Services
 			context.ShoppingcartsBooks.RemoveRange(shoppingCartItems);
 			context.SaveChangesAsync();
 		}
-	}
+        public async Task<IEnumerable<CountryViewModel>> GetAllCountries()
+        {
+			return await context.Countries
+				.Select(sc => new CountryViewModel
+				{
+					Id = sc.Id,
+					Name = sc.Name
+				}).ToListAsync();
+        }
+    }
 }

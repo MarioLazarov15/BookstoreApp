@@ -51,6 +51,13 @@
 								<span asp-validation-for="AdditionalInfo" class="text-danger"></span>
 							</div>
 						</div>
+						<div class="mb-3">
+							<label asp-for="@Model.CountryId" class="form-label-add-edit">Select Country</label>
+							<select asp-for="@Model.CountryId" class="form-control" aria-required="true" asp-items="@(new SelectList(Model.Countries, "Id", "Name"))">
+								<option value="">Select Country...</option>
+							</select>
+							<span asp-validation-for="@Model.CountryId" class="text-danger"></span>
+						</div>
 						<div class="w-100"></div>
 						<div class="col-md-6">
 							<div class="form-group">

@@ -1,5 +1,6 @@
 ﻿using BookstoreApp.Core.Contracts;
 using BookstoreApp.Core.Models.Checkout;
+using BookstoreApp.Core.Models.Country;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +20,12 @@ namespace BookstoreApp.Controllers
 			var user = await userManager.GetUserAsync(User);
 
 			var shoppingCartViewModel = await checkoutService.Index(user.Id);
-			var checkoutFormModel = new CheckoutFormModel();
+			var countries = await checkoutService.GetAllCountries();
+
+            var checkoutFormModel = new CheckoutFormModel()
+			{
+				Countries = countries
+			};
 
 			return View(checkoutFormModel);
 		}

@@ -325,6 +325,10 @@ namespace BookstoreApp.Infrastructure.Migrations
                         .HasColumnType("nvarchar(85)")
                         .HasComment("City of the buyer");
 
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int")
+                        .HasComment("Country of the buyer");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -356,6 +360,8 @@ namespace BookstoreApp.Infrastructure.Migrations
                         .HasComment("Zip code of the buyer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
 
                     b.ToTable("Orders");
                 });
@@ -655,6 +661,17 @@ namespace BookstoreApp.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.Order", b =>
+                {
+                    b.HasOne("BookstoreApp.Infrastructure.Data.Models.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
                 });
 
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.OrderBook", b =>

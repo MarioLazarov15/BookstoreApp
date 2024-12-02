@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BookstoreApp.Core.Models.Admin;
+using BookstoreApp.Core.Models.Category;
+using BookstoreApp.Core.Models.Country;
 using BookstoreApp.Infrastructure.Constants;
 using BookstoreApp.Infrastructure.Data.Models;
 
@@ -45,6 +48,13 @@ namespace BookstoreApp.Core.Models.Checkout
 		[StringLength(DataConstants.Order.EmailMaxLength, MinimumLength = DataConstants.Order.EmailMinLength,
 			ErrorMessage = "{0} must be between {2} and {1} characters.")]
 		[EmailAddress(ErrorMessage = "Invalid email address.")]
-		public string Email { get; set; } = null!;
-	}
+        public string Email { get; set; } = null!;
+
+		[Required]
+		[Display(Name = "Country")]
+		public int CountryId { get; set; }
+		public IEnumerable<CountryViewModel>? Countries { get; set; }
+          = new List<CountryViewModel>();
+
+    }
 }
