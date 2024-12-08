@@ -22,6 +22,8 @@ builder.Services.AddScoped<IAdminServices, AdminServices>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+builder.Services.AddAntiforgery(options => options.HeaderName = "XSRF-TOKEN");
+
 builder.Services.AddDefaultIdentity<IdentityUser>((options =>
 {
 	options.SignIn.RequireConfirmedAccount = false;
@@ -37,11 +39,11 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 await BookstoreApp.Extensions.ApplicationBuilderExtensions.CreateAdminRoleAsync(app);
 
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseMigrationsEndPoint();
+	app.UseDeveloperExceptionPage();
+	app.UseMigrationsEndPoint();
 }
 else
 {

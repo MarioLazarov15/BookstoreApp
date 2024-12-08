@@ -13,7 +13,7 @@ namespace BookstoreApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+		public IActionResult Index()
         {
             return View();
         }
@@ -22,14 +22,14 @@ namespace BookstoreApp.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Error(int statusCode)
         {
-            if (statusCode == 400)
+            if (statusCode == 500)
             {
-                return View("Error400");
+                return View("Error");
             }
 
-            if (statusCode == 401)
+            if (statusCode == 404)
             {
-                return View("Error401");
+                return View("Error404");
             }
 
             return View();
