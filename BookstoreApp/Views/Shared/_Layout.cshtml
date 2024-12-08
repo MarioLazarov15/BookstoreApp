@@ -30,11 +30,16 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AddNewBook">Add Book</a>
                             </li>
                         }
-                        @if (User?.Identity?.IsAuthenticated  ?? false && User.IsAdmin()== false)
+
+                        @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Bookstore" asp-action="GetAllBooks">Bookstore</a>
                             </li>
+                        }
+
+                        @if (User.Identity.IsAuthenticated && User.IsAdmin() == false)
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Shoppingcart" asp-action="GetAllFromShoppingcart">Shoppingcart</a>
                             </li>
