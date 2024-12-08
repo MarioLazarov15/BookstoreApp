@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BookstoreApp.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class IniticialMigration : Migration
+    public partial class InicialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -205,7 +205,7 @@ namespace BookstoreApp.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false, comment: "Book identifier")
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false, comment: "Book title"),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Image of the book"),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "Image of the book"),
                     Description = table.Column<string>(type: "nvarchar(750)", maxLength: 750, nullable: true, comment: "Description of the book"),
                     Price = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false, comment: "Book price"),
                     CategoryId = table.Column<int>(type: "int", nullable: false, comment: "Category of the book")

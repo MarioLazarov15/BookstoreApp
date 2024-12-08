@@ -22,9 +22,10 @@ namespace BookstoreApp.Infrastructure.Data.Models
         public string Title { get; set; } = null!;
 
         [Comment("Image of the book")]
-        public string? ImageUrl { get; set; }
+        [Required]
+		public string ImageUrl { get; set; } = null!;
 
-        [Comment("Description of the book")]
+		[Comment("Description of the book")]
         [MaxLength(Constants.DataConstants.Book.DescriptionMaxLength)]
         public string? Description { get; set; }
 

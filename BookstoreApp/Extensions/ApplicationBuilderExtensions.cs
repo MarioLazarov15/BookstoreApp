@@ -58,7 +58,7 @@ namespace BookstoreApp.Extensions
                 UserName = "admin@admin.com",
             };
 
-            await userManager.CreateAsync(user, "123654mario_");
+            await userManager.CreateAsync(user, "123654Mario_");
             await userManager.CreateAsync(admin, "Admin15_");
         }
     }

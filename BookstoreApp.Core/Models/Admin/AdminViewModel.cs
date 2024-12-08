@@ -22,13 +22,16 @@ namespace BookstoreApp.Core.Models.Admin
         [Display(Name = "Description")]
         public string? Description { get; set; }
 
-        [Display(Name = "Image URL")]
-        public string? ImageUrl { get; set; }
+		[Required]
+		[Display(Name = "Image URL")]
+        public string ImageUrl { get; set; } = string.Empty;
 
 
-        [Required]
+		[Required]
         [Display(Name = "Price")]
-        public decimal Price { get; set; }
+		[Range(1.0, 1000.0, ErrorMessage = "{0} must be between {1} and {2}.")]
+
+		public decimal Price { get; set; }
 
         [Required]
         [Display(Name = "Category")]

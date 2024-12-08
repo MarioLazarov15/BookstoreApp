@@ -20,10 +20,10 @@ namespace BookstoreApp.Core.Models.Book
         [StringLength(DataConstants.Book.DescriptionMaxLength)]
         public string? Description { get; set; }
 
-		public string? ImageUrl { get; set; }
+		public string ImageUrl { get; set; } = string.Empty;
 
 
-        [Required]
+		[Required]
         public decimal Price { get; set; }
 
 

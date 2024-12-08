@@ -41,6 +41,7 @@ namespace BookstoreApp.Infrastructure.Migrations
                         .HasComment("Description of the book");
 
                     b.Property<string>("ImageUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasComment("Image of the book");
 
