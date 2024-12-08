@@ -26,6 +26,8 @@ namespace BookstoreApp.Infrastructure.Constants
         {
             public const int TitleMaxLength = 150;
             public const int DescriptionMaxLength = 750;
+            public const double PriceMaxValue = 999.9;
+            public const double PriceMinValue = 0.9;
         }
         public static class Order
         {

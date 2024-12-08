@@ -29,7 +29,7 @@ namespace BookstoreApp.Core.Models.Admin
 
 		[Required]
         [Display(Name = "Price")]
-		[Range(1.0, 1000.0, ErrorMessage = "{0} must be between {1} and {2}.")]
+		[Range(DataConstants.Book.PriceMinValue, DataConstants.Book.PriceMaxValue, ErrorMessage = "{0} must be between {1} and {2}.")]
 
 		public decimal Price { get; set; }
 
