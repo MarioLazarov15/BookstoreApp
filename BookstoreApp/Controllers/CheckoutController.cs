@@ -38,7 +38,14 @@ namespace BookstoreApp.Controllers
 			var user = await userManager.GetUserAsync(User);
 			var shoppingCartViewModel = await checkoutService.Index(user.Id);
 
-			if (!ModelState.IsValid)
+            var countries = await checkoutService.GetAllCountries();
+
+            checkoutFormModel = new CheckoutFormModel()
+            {
+                Countries = countries
+            };
+
+            if (!ModelState.IsValid)
 			{
 				return View("Index", checkoutFormModel);
 			}
