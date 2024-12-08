@@ -22,7 +22,7 @@ namespace BookstoreApp.Core.Services
         }
 
 
-		public async Task<List<BookDetailsViewModel>> GetAllBooksAsync(string searchTerm, BookSorting sorting)
+		public async Task<List<BookDetailsViewModel>> GetAllBooksAsync(string searchTerm, BookSorting sorting, int currentPage,int productsPerPage)
 		{
 			var productsQuery = context.Books.AsQueryable();
 
@@ -48,7 +48,9 @@ namespace BookstoreApp.Core.Services
 					break;
 			}
 			var books = await productsQuery
-				.Select(book => new BookDetailsViewModel
+                .Skip((currentPage - 1) * productsPerPage)
+                .Take(productsPerPage)
+                .Select(book => new BookDetailsViewModel
 				{
 					Id = book.Id,
 					Title = book.Title,
@@ -60,5 +62,12 @@ namespace BookstoreApp.Core.Services
 				.ToListAsync();
 			return books;
 		}
-	}
+        public async Task<int> GetBooksCountAsync()
+		{ 
+            var productsQuery = context.Books.AsQueryable();
+            var totalBooksCount = await productsQuery.CountAsync();
+			return totalBooksCount;
+        }
+
+    }
 }

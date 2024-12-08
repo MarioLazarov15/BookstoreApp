@@ -11,7 +11,8 @@ namespace BookstoreApp.Controllers
 {
     public class BookstoreController : BaseController
     {
-		private readonly IBookstoreServices bookstoreServices;
+        private const int productsPerPage = 8;
+        private readonly IBookstoreServices bookstoreServices;
 		public BookstoreController(
 			IBookstoreServices bookstoreServices)
 		{
@@ -21,15 +22,17 @@ namespace BookstoreApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllBooks(
 			[FromQuery] string searchTerm = "",
-			[FromQuery] BookSorting sorting = BookSorting.AscendingByName)
+            [FromQuery] int currentPage = 1,
+            [FromQuery] BookSorting sorting = BookSorting.AscendingByName)
         {
-			var books = await bookstoreServices.GetAllBooksAsync(searchTerm, sorting);
-
-			var viewModel = new BooksViewModel(books)
+			var books = await bookstoreServices.GetAllBooksAsync(searchTerm, sorting, currentPage, productsPerPage);
+            var totalBooksCount = await bookstoreServices.GetBooksCountAsync();
+			var viewModel = new BooksViewModel(books, totalBooksCount)
 			{
 				SearchTerm = searchTerm,
 				Sorting = sorting,
-			};
+                CurrentPage = currentPage
+            };
 			return View(viewModel);
         }
     }

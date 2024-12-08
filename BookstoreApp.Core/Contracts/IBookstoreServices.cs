@@ -12,6 +12,8 @@ namespace BookstoreApp.Core.Contracts
     public interface IBookstoreServices
     {
 		Task<List<BookDetailsViewModel>> GetAllBooksAsync(string searchTerm,
-		   BookSorting sorting);
-	}
+		   BookSorting sorting, int currentPage, int productsPerPage);
+        Task<int> GetBooksCountAsync();
+
+    }
 }
