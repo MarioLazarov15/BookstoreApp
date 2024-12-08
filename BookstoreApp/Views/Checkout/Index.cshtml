@@ -3,161 +3,174 @@
 @model BookstoreApp.Core.Models.Checkout.CheckoutFormModel
 @inject BookstoreApp.Core.Contracts.IShoppingcartServices shoppingcartService;
 @{
-	var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-	var userId = userIdClaim?.Value;
+    var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+    var userId = userIdClaim?.Value;
 
-	var viewModel = await shoppingcartService.GetAllBooksFromCartAsync(userId);
-	var total = viewModel.Total;
+    var viewModel = await shoppingcartService.GetAllBooksFromCartAsync(userId);
+    var total = viewModel.Total;
 }
 
 <div class="hero-wrap hero-bread" style="background-image: url('https://pbs.twimg.com/media/D7vU-BDVUAAWHgM?format=jpg&name=medium');">
-	<div class="container">
-		<div class="row no-gutters slider-text align-items-center justify-content-center">
-			<div class="col-md-9 ftco-animate text-center">
-				<h1 class="mb-0 bread">Checkout</h1>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-0 bread">Checkout</h1>
+            </div>
+        </div>
+    </div>
 </div>
 
 <section class="ftco-section">
-	<div class="container">
-		<form method="post" asp-action="ProcessCheckout" asp-controller="Checkout" class="billing-form">
-			@Html.AntiForgeryToken()
-			<div class="row justify-content-center">
-				<div class="col-xl-7 ftco-animate">
-					<h3 class="mb-4 billing-heading">Billing Details</h3>
-					<div class="row align-items-end">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label asp-for="FirstName">First Name</label>
-								<input asp-for="FirstName" type="text" name="FirstName" class="form-control" placeholder="">
-								<span asp-validation-for="FirstName" class="small text-danger"></span>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label asp-for="LastName">Last Name</label>
-								<input asp-for="LastName" type="text" name="LastName" class="form-control" placeholder="">
-								<span asp-validation-for="LastName" class="small text-danger"></span>
-							</div>
-						</div>
-						<div class="w-100"></div>
-						<div class="w-100"></div>
-						<div class="col-md-6">
-							<div class="mb-3">
-								<label asp-for="AdditionalInfo" class="form-label-add-edit">Additional Info</label>
-								<textarea asp-for="AdditionalInfo" class="form-control" aria-required="false" rows="5"></textarea>
-								<span asp-validation-for="AdditionalInfo" class="text-danger"></span>
-							</div>
-						</div>
-						<div class="mb-3">
-							<label asp-for="@Model.CountryId" class="form-label-add-edit">Select Country</label>
-							<select asp-for="@Model.CountryId" class="form-control" aria-required="true" asp-items="@(new SelectList(Model.Countries, "Id", "Name"))">
-								<option value="">Select Country...</option>
-							</select>
-							<span asp-validation-for="@Model.CountryId" class="text-danger"></span>
-						</div>
-						<div class="w-100"></div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label asp-for="City">City</label>
-								<input asp-for="City" type="text" name="City" class="form-control" placeholder="">
-								<span asp-validation-for="City" class="small text-danger"></span>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label asp-for="Postcode">Postcode</label>
-								<input asp-for="Postcode" type="text" name="Postcode" class="form-control" placeholder="">
-								<span asp-validation-for="Postcode" class="small text-danger"></span>
-							</div>
-						</div>
-						<div class="w-100"></div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label asp-for="Phone">Phone</label>
-								<input asp-for="Phone" type="text" name="Phone" class="form-control" placeholder="">
-								<span asp-validation-for="Phone" class="small text-danger"></span>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label asp-for="Email">Email Address</label>
-								<input asp-for="Email" type="text" name="Email" class="form-control" placeholder="">
-								<span asp-validation-for="Email" class="small text-danger"></span>
-							</div>
-						</div>
-						<div class="w-100"></div>
-					</div>
-				</div>
-				<div class="col-xl-5">
-					<div class="row mt-5 pt-3">
-						<div class="col-md-12 d-flex mb-5">
-							<div class="cart-detail cart-total p-3 p-md-4">
-								<h3 class="billing-heading mb-4">Cart Total</h3>
-								<p class="d-flex">
-									<span>Subtotal</span>
-									<span>$@Math.Round(total, 2)</span>
-								</p>
-								<p class="d-flex">
-									<span>Delivery</span>
-									@if (total < 50)
-									{
-										<span>
-											$5.90
-										</span>
-									}
-									else
-									{
-										<span class="free-delivery">$0.00</span>
-									}
-								</p>
-								<hr>
-								<p class="d-flex total-price">
-									<span>Total</span>
-									@if (total < 50)
-									{
-										<span>$@Math.Round(total + (decimal)5.90, 2)</span>
-									}
-									else
-									{
-										<span>$@Math.Round(total, 2)</span>
-									}
-								</p>
-							</div>
-						</div>
+    <div class="container">
+        <form method="post" asp-action="ProcessCheckout" asp-controller="Checkout" class="billing-form">
+            @Html.AntiForgeryToken()
+            <div class="row justify-content-center">
+                <div class="col-xl-7 ftco-animate">
+                    <h3 class="mb-4 billing-heading">Billing Details</h3>
+                    <div class="row align-items-end">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="FirstName">First Name</label>
+                                <input asp-for="FirstName" type="text" name="FirstName" class="form-control" placeholder="">
+                                <span asp-validation-for="FirstName" class="small text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="LastName">Last Name</label>
+                                <input asp-for="LastName" type="text" name="LastName" class="form-control" placeholder="">
+                                <span asp-validation-for="LastName" class="small text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="AdditionalInfo" class="form-label-add-edit">Additional Info</label>
+                                <textarea asp-for="AdditionalInfo" class="form-control" aria-required="false" rows="5"></textarea>
+                                <span asp-validation-for="AdditionalInfo" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="@Model.CountryId" class="form-label-add-edit">Select Country</label>
+                            <select asp-for="@Model.CountryId" class="form-control" aria-required="true" asp-items="@(new SelectList(Model.Countries, "Id", "Name"))">
+                                <option value="">Select Country...</option>
+                            </select>
+                            <span asp-validation-for="@Model.CountryId" class="text-danger"></span>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="City">City</label>
+                                <input asp-for="City" type="text" name="City" class="form-control" placeholder="">
+                                <span asp-validation-for="City" class="small text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Postcode">Postcode</label>
+                                <input asp-for="Postcode" type="text" name="Postcode" class="form-control" placeholder="">
+                                <span asp-validation-for="Postcode" class="small text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Phone">Phone</label>
+                                <input asp-for="Phone" type="text" name="Phone" class="form-control" placeholder="">
+                                <span asp-validation-for="Phone" class="small text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Email">Email Address</label>
+                                <input asp-for="Email" type="text" name="Email" class="form-control" placeholder="">
+                                <span asp-validation-for="Email" class="small text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                    </div>
+                </div>
+                <div class="col-xl-5">
+                    <div class="row mt-5 pt-3">
+                        <div class="col-md-12 d-flex mb-5">
+                            <div class="cart-detail cart-total p-3 p-md-4">
+                                <h3 class="billing-heading mb-4">Cart Total</h3>
+                                <p class="d-flex">
+                                    <span>Subtotal</span>
+                                    <span>$@Math.Round(total, 2)</span>
+                                </p>
+                                <p class="d-flex">
+                                    <span>Delivery</span>
+                                    @if (total < 50)
+                                    {
+                                        <span>$5.90</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="free-delivery">$0.00</span>
+                                    }
+                                </p>
+                                <hr>
+                                <p class="d-flex total-price">
+                                    <span>Total</span>
+                                    @if (total < 50)
+                                    {
+                                        <span>$@Math.Round(total + (decimal)5.90, 2)</span>
+                                    }
+                                    else
+                                    {
+                                        <span>$@Math.Round(total, 2)</span>
+                                    }
+                                </p>
+                            </div>
+                        </div>
 
-						<div class="col-md-12">
-							<div class="cart-detail p-3 p-md-4">
-								<h3 class="billing-heading mb-4">Payment Method</h3>
-								<div class="form-group">
-									<div class="col-md-12">
-										<div class="radio">
-											<label><input type="radio" name="optradio" class="mr-2"> Cash on Delivery</label>
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-md-12">
-										<div class="radio">
-											<label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-md-12">
-										<div class="checkbox">
-											<label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
-										</div>
-									</div>
-								</div>
-								<input type="submit" value="Place an Order" class="btn btn-primary py-3 px-4">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
-</section> 
+                        <div class="col-md-12">
+                            <div class="cart-detail p-3 p-md-4">
+                                <h3 class="billing-heading mb-4">Payment Method</h3>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" class="mr-2"> Cash on Delivery</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" id="termsCheckbox" class="mr-2"> I have read and accept the terms and conditions
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <input type="submit" id="placeOrderBtn" value="Place an Order" class="btn btn-primary py-3 px-4" disabled>
+
+                                <script>
+                                    const checkbox = document.getElementById("termsCheckbox");
+                                    const button = document.getElementById("placeOrderBtn");
+
+                                    function updateButtonState() {
+                                        button.disabled = !checkbox.checked; }
+
+                                    checkbox.addEventListener("change", updateButtonState);
+                                    updateButtonState();
+                                </script>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
