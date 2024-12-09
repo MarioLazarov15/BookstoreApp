@@ -194,6 +194,26 @@ namespace BookstoreApp.Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.BooksReadList", b =>
+                {
+                    b.Property<string>("ReadListId")
+                        .HasColumnType("nvarchar(450)")
+                        .HasComment("Read list identifier");
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int")
+                        .HasComment("Book identifier");
+
+                    b.HasKey("ReadListId", "BookId");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("BooksReadLists", t =>
+                        {
+                            t.HasComment("Mapping table of Read List and Book");
+                        });
+                });
+
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -388,6 +408,20 @@ namespace BookstoreApp.Infrastructure.Migrations
                     b.ToTable("OrdersBooks", t =>
                         {
                             t.HasComment("Mapping table of Book and Order");
+                        });
+                });
+
+            modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.ReadList", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)")
+                        .HasComment("Read list identifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ReadLists", t =>
+                        {
+                            t.HasComment("Read list model");
                         });
                 });
 
@@ -664,6 +698,25 @@ namespace BookstoreApp.Infrastructure.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.BooksReadList", b =>
+                {
+                    b.HasOne("BookstoreApp.Infrastructure.Data.Models.Book", "Book")
+                        .WithMany("BooksReadList")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookstoreApp.Infrastructure.Data.Models.ReadList", "ReadList")
+                        .WithMany("BooksReadList")
+                        .HasForeignKey("ReadListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("ReadList");
+                });
+
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.Order", b =>
                 {
                     b.HasOne("BookstoreApp.Infrastructure.Data.Models.Country", "Country")
@@ -785,6 +838,8 @@ namespace BookstoreApp.Infrastructure.Migrations
 
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.Book", b =>
                 {
+                    b.Navigation("BooksReadList");
+
                     b.Navigation("OrdersBooks");
 
                     b.Navigation("ShoppingcartsBooks");
@@ -800,6 +855,11 @@ namespace BookstoreApp.Infrastructure.Migrations
                     b.Navigation("OrdersBooks");
 
                     b.Navigation("UsersOrders");
+                });
+
+            modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.ReadList", b =>
+                {
+                    b.Navigation("BooksReadList");
                 });
 
             modelBuilder.Entity("BookstoreApp.Infrastructure.Data.Models.ShoppingCart", b =>

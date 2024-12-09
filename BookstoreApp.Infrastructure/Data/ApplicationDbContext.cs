@@ -22,6 +22,8 @@ namespace BookstoreApp.Infrastructure.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<UserOrder> UsersOrders { get; set; }
         public DbSet<OrderBook> OrdersBooks { get; set; }
+        public DbSet<ReadList> ReadLists { get; set; }
+        public DbSet<BooksReadList> BooksReadLists { get; set; }
 
         protected async override void OnModelCreating(ModelBuilder builder)
         {
@@ -41,6 +43,13 @@ namespace BookstoreApp.Infrastructure.Data
                 .HasKey(scb => new
                 {
                     scb.ShoppingcartId,
+                    scb.BookId
+                });
+
+            builder.Entity<BooksReadList>()
+                .HasKey(scb => new
+                {
+                    scb.ReadListId,
                     scb.BookId
                 });
 

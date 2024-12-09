@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -45,5 +46,8 @@ namespace BookstoreApp.Infrastructure.Data.Models
 
         [Comment("List of the mapping table ShoppingcartBook")]
         public IEnumerable<ShoppingcartBook> ShoppingcartsBooks { get; set; } = new List<ShoppingcartBook>();
+
+        [Comment("List of the mapping table BooksReadList")]
+        public IEnumerable<BooksReadList> BooksReadList { get; set; } = new List<BooksReadList>();
     }
 }

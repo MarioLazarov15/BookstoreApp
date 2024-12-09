@@ -81,6 +81,18 @@ namespace BookstoreApp.Infrastructure.Migrations
                 comment: "Country");
 
             migrationBuilder.CreateTable(
+                name: "ReadLists",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "Read list identifier")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ReadLists", x => x.Id);
+                },
+                comment: "Read list model");
+
+            migrationBuilder.CreateTable(
                 name: "Shoppingcarts",
                 columns: table => new
                 {
@@ -246,6 +258,31 @@ namespace BookstoreApp.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "BooksReadLists",
+                columns: table => new
+                {
+                    ReadListId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "Read list identifier"),
+                    BookId = table.Column<int>(type: "int", nullable: false, comment: "Book identifier")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BooksReadLists", x => new { x.ReadListId, x.BookId });
+                    table.ForeignKey(
+                        name: "FK_BooksReadLists_Books_BookId",
+                        column: x => x.BookId,
+                        principalTable: "Books",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BooksReadLists_ReadLists_ReadListId",
+                        column: x => x.ReadListId,
+                        principalTable: "ReadLists",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                },
+                comment: "Mapping table of Read List and Book");
 
             migrationBuilder.CreateTable(
                 name: "ShoppingcartsBooks",
@@ -417,6 +454,11 @@ namespace BookstoreApp.Infrastructure.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BooksReadLists_BookId",
+                table: "BooksReadLists",
+                column: "BookId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Orders_CountryId",
                 table: "Orders",
                 column: "CountryId");
@@ -456,6 +498,9 @@ namespace BookstoreApp.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "BooksReadLists");
+
+            migrationBuilder.DropTable(
                 name: "OrdersBooks");
 
             migrationBuilder.DropTable(
@@ -466,6 +511,9 @@ namespace BookstoreApp.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "ReadLists");
 
             migrationBuilder.DropTable(
                 name: "Books");
