@@ -1,0 +1,56 @@
+﻿@model BookstoreApp.Core.Models.ReadList.ReadListViewModel
+@{
+    ViewBag.Title = "My List Of Read books";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row">
+    @foreach (var book in Model.Books)
+    {
+        <div class="card col-4 mt-4 me-2" style="width: 20rem;">
+            @if (!string.IsNullOrEmpty(book.ImageUrl))
+            {
+                <img src="@book.ImageUrl" class="card-img-top" style="width: 18rem;" alt="Image">
+            }
+            else
+            {
+                <img src="~/img/PH.jpg" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" alt="Placeholder Image">
+            }
+            <div class="card-body" style="height: calc(100% - 150px); overflow: auto;">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="title-wrapper" style="height: 6em; overflow: hidden;">
+                            <h4 class="card-title mt-1">@book.Title</h4>
+                        </div>
+                    </div>
+                </div>
+                <h5 class="card-title mt-1">@book.Category</h5>
+            </div>
+            <div class="row gx-0">
+                <form method="post" asp-controller="Readlist" asp-action="RemoveFromReadList">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-warning btn-sm mb-2 w-100 fw-bold rounded btn-dark-text">Remove book from read list<span class="ion-ios-cart"></span></button>
+                    <input type="hidden" name="bookId" value="@book.Id" />
+                </form>
+                <div class="col-6 px-1">
+                    <form method="post" asp-controller="Shoppingcart" asp-action="AddToShoppingcart">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-warning btn-sm mb-2 w-100 fw-bold rounded btn-dark-text">Add to cart<span class="ion-ios-cart"></span></button>
+                        <input type="hidden" name="bookId" value="@book.Id" />
+                        <input type="hidden" name="amount" value="1" />
+                    </form>
+                </div>
+                <div class="col-6 px-1">
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id" class="btn btn-warning btn-sm mb-2 w-100 fw-bold rounded btn-dark-text">Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

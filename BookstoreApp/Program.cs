@@ -19,6 +19,7 @@ builder.Services.AddScoped<IBookServices, BookServices>();
 builder.Services.AddScoped<IShoppingcartServices, ShoppingcartServices>();
 builder.Services.AddScoped<ICheckoutService, CheckoutService>();
 builder.Services.AddScoped<IAdminServices, AdminServices>();
+builder.Services.AddScoped<IReadListServices, ReadListServices>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

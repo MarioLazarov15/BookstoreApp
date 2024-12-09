@@ -18,6 +18,8 @@
     }
 }
 
+<h2 class="text-center">@ViewBag.Title</h2> 
+<hr />
 
 <form method="get" asp-action="GetAllBooks" asp-controller="Bookstore">
     <div class="container mt-4">
@@ -99,6 +101,11 @@
                     <button type="submit" class="btn btn-warning btn-sm mb-2 w-100 fw-bold rounded btn-dark-text">Add to cart<span class="ion-ios-cart"></span></button>
                     <input type="hidden" name="bookId" value="@book.Id" />
                     <input type="hidden" name="amount" value="1" />
+                </form>
+                <form method="post" asp-controller="Readlist" asp-action="AddBookToReadList">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-warning btn-sm mb-2 w-100 fw-bold rounded btn-dark-text">Add book to read list<span class="ion-ios-cart"></span></button>
+                    <input type="hidden" name="bookId" value="@book.Id" />
                 </form>
             }
             <div class="col-12 px-1">
