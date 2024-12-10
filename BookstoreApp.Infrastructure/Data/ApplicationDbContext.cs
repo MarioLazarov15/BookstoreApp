@@ -13,8 +13,7 @@ namespace BookstoreApp.Infrastructure.Data
         {
 
         }
-
-        public DbSet<Book> Books { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<ShoppingCart> Shoppingcarts { get; set; }
