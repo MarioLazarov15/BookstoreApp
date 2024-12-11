@@ -8,6 +8,14 @@
 <hr />
 
 <div class="text-center row">
+    @if (Model.Books.Count() == 0)
+    {
+        <h1>Your list of read books is empty.</h1>
+
+        <p>
+            <a asp-action="GetAllBooks" asp-controller="Bookstore" class="btn btn-warning btn-warning py-3 mb-2 w-100 fw-bold rounded btn-dark-text">Add books</a>
+        </p>
+    }
     @foreach (var book in Model.Books)
     {
         <div class="card col-4 mt-4 me-2" style="width: 20rem;">
