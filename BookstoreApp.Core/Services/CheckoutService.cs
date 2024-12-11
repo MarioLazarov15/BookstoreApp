@@ -45,6 +45,11 @@ namespace BookstoreApp.Core.Services
 		{
 			var user = await userManager.FindByIdAsync(shoppingcartId);
 			var orderId = Guid.NewGuid();
+			var country = context.Countries.FirstOrDefault(b => b.Id == checkoutFormModel.CountryId);
+			if (country==null)
+			{
+				return;
+			}
 			var order = new Order()
 			{
 				Id = orderId.ToString(),
@@ -55,9 +60,9 @@ namespace BookstoreApp.Core.Services
 				City = checkoutFormModel.City,
 				ZipCode = checkoutFormModel.Postcode.ToString(),
 				AdditionalInfo = checkoutFormModel.AdditionalInfo,
-				CountryId = checkoutFormModel.CountryId
-
-			};
+				CountryId = checkoutFormModel.CountryId,
+				Country = country
+            };
 
 			var shoppingcartProducts = context.ShoppingcartsBooks.Where(scp => scp.ShoppingcartId == shoppingcartId);
 

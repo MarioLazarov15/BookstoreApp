@@ -40,10 +40,8 @@ namespace BookstoreApp.Controllers
 
             var countries = await checkoutService.GetAllCountries();
 
-            checkoutFormModel = new CheckoutFormModel()
-            {
-                Countries = countries
-            };
+			checkoutFormModel.Countries = countries;
+             
 
             if (!ModelState.IsValid)
 			{
