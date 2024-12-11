@@ -50,7 +50,7 @@ namespace BookstoreApp.Core.Tests
         }
 
         [Test]
-        public async Task GetBookDetailsAsync_ReturnBookDetails()
+        public async Task GetBookDetailsAsync()
         {
             var result = await _bookServices.GetBookDetailsAsync(15);
 
